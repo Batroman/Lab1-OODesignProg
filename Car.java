@@ -7,6 +7,19 @@ public class Car{
     public Color color; // Color of the car
     public String modelName; // The car model name
 
+    public Pair<Integer,Integer> pos = new Pair<Integer,Integer>(x,y);
+
+    class Position implements Movable {
+        public void move() {
+
+        }
+        public void turnLeft() {
+
+        }
+        public void turnRight() {
+
+        }
+    }
 
     public int getNrDoors(){
         return nrDoors;
