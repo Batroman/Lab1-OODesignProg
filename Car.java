@@ -8,6 +8,7 @@ public class Car{
     public String modelName; // The car model name
 
     public Pair<Integer,Integer> pos = new Pair<Integer,Integer>(x,y);
+    // add variable direction
 
     class Position implements Movable {
         public void move() {
@@ -20,6 +21,8 @@ public class Car{
 
         }
     }
+
+    // TODO add methods getPosition, getDirection
 
     public int getNrDoors(){
         return nrDoors;
