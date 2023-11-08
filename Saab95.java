@@ -15,7 +15,7 @@ public class Saab95 extends Car{
 
         xPosition = 1;
         yPosition = 1;
-        direction = 'N';
+        direction = 0;
 
         Point2D.Double position = new Point2D.Double(xPosition, yPosition);
 
