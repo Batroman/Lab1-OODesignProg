@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Saab95 extends Car{
 
@@ -12,8 +13,12 @@ public class Saab95 extends Car{
         modelName = "Saab95";
         stopEngine();
 
-        // add initial x,y position
-        // add initial direction
+        xPosition = 1;
+        yPosition = 1;
+        direction = 'N';
+
+        Point2D.Double position = new Point2D.Double(xPosition, yPosition);
+
     }
 
     private void setTurboOn(){

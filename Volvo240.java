@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Volvo240 extends Car {
 
@@ -11,8 +12,11 @@ public class Volvo240 extends Car {
         modelName = "Volvo240";
         stopEngine();
 
-        // add initial x,y position
-        // add initial direction
+        xPosition = 5;
+        yPosition = 1;
+        direction = 'N';
+
+        Point2D.Double position = new Point2D.Double(xPosition, yPosition);
     }
 
 
