@@ -12,6 +12,9 @@ public class testclass {
         set = new Volvo240();
         set.enginePower = 100;
 
+        set.position.setLocation(0, 0);
+        set.direction = 0;
+
     }
     @Test
     public void testSpeedFactor(){
@@ -31,4 +34,18 @@ public class testclass {
 
 
     }
+
+    @Test
+    public void testMove() {
+        //set.Position.Movable.move();
+    }
+
+    public void testTurnLeft() {
+
+    }
+
+    public void testTurnRight() {
+
+    }
+
 }
