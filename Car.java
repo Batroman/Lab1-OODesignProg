@@ -35,13 +35,11 @@ public class Car {
         }
 
         public void turnLeft() {
-            direction = getDirection() + 90;
-            direction = direction % 360;
+            direction = (getDirection() + 90) % 360;
         }
 
         public void turnRight() {
-            direction = getDirection() - 90;
-            direction = direction % 360;
+            direction = (getDirection() - 90) % 360;
         }
 
         public Point2D.Double getPosition() {
@@ -55,7 +53,7 @@ public class Car {
         public int getDirection() {
             return direction;
         }
-        
+
         public int getNrDoors() {
             return nrDoors;
         }
