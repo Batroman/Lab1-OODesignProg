@@ -43,66 +43,66 @@ public class Car {
             direction = getDirection() - 90;
             direction = direction % 360;
         }
+    }
 
-        public Point2D.Double getPosition() {
-            return position;
-        }
+    public Point2D.Double getPosition() {
+        return position;
+    }
 
-        public void setPosition(double xPosition, double yPosition) {
-            position.setLocation(xPosition, yPosition);
-        }
+    public void setPosition(double xPosition, double yPosition) {
+        position.setLocation(xPosition, yPosition);
+    }
 
-        public int getDirection() {
-            return direction;
-        }
-        
-        public int getNrDoors() {
-            return nrDoors;
-        }
+    public int getDirection() {
+        return direction;
+    }
 
-        public double getEnginePower() {
-            return enginePower;
-        }
+    public int getNrDoors() {
+        return nrDoors;
+    }
 
-        public double getCurrentSpeed() {
-            return currentSpeed;
-        }
+    public double getEnginePower() {
+        return enginePower;
+    }
 
-        public Color getColor() {
-            return color;
-        }
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
 
-        public void setColor(Color clr) {
-            color = clr;
-        }
+    public Color getColor() {
+        return color;
+    }
 
-        public void startEngine() {
-            currentSpeed = 0.1;
-        }
+    public void setColor(Color clr) {
+        color = clr;
+    }
 
-        public void stopEngine() {
-            currentSpeed = 0;
-        }
+    public void startEngine() {
+        currentSpeed = 0.1;
+    }
+
+    public void stopEngine() {
+        currentSpeed = 0;
+    }
 
 
-        public double speedFactor() {
-            return 1.0; // Todo
-        }
+    public double speedFactor() {
+        return 1.0; // Todo
+    }
 
-        public void incrementSpeed(double amount) {
-        }
+    public void incrementSpeed(double amount) {
+    }
 
-        public void decrementSpeed(double amount) {
-        }
+    public void decrementSpeed(double amount) {
+    }
 
-        // TODO fix this method according to lab pm
-        public void gas(double amount) {
-            incrementSpeed(amount);
-        }
+    // TODO fix this method according to lab pm
+    public void gas(double amount) {
+        incrementSpeed(amount);
+    }
 
-        // TODO fix this method according to lab pm
-        public void brake(double amount) {
-            decrementSpeed(amount);
-        }
+    // TODO fix this method according to lab pm
+    public void brake(double amount) {
+        decrementSpeed(amount);
     }
 }
