@@ -7,14 +7,16 @@ public class Car{
     public double currentSpeed; // The current speed of the car
     public Color color; // Color of the car
     public String modelName; // The car model name
-    public int xPosition; // The car x-position
-    public int yPosition; // The car y-position
+    public double xPosition; // The car x-position
+    public double yPosition; // The car y-position
     public char direction; // The direction of the car
-    public double position; // The position of the car
+    public Point2D.Double position; // The position of the car
 
      private class Position implements Movable {
          public void move() {
             position = getPosition();
+            xPosition = position.getX();
+            yPosition = position.getY();
             direction = getDirection();
             switch (direction) {
                 case 'N':
@@ -30,6 +32,7 @@ public class Car{
                     xPosition += getCurrentSpeed();
                     break;
             }
+            setPosition(xPosition, yPosition);
          }
 
          public void turnLeft() {
@@ -45,7 +48,8 @@ public class Car{
                      break;
                  case 'E':
                      direction = 'N';
-                     break;}
+                     break;
+             }
          }
 
          public void turnRight(){
@@ -61,15 +65,15 @@ public class Car{
                          break;
                      case 'W':
                          direction = 'N';
-                         break;}}
+                         break;
+                 }
+         }
 
-    // TODO add methods getPosition, getDirection
-
-    public double getPosition() {
+    public Point2D.Double getPosition() {
         return position;
      }
 
-     public double setPosition() {
+     public void setPosition(double xPosition, double yPosition) {
          Point2D.Double position = new Point2D.Double(xPosition, yPosition);
      }
      public char getDirection() {
