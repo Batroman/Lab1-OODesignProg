@@ -45,7 +45,7 @@ public class Car{
                      break;
                  case 'E':
                      direction = 'N';
-                     break;
+                     break;}
          }
 
          public void turnRight(){
@@ -61,7 +61,7 @@ public class Car{
                          break;
                      case 'W':
                          direction = 'N';
-                         break;
+                         break;}}
 
     // TODO add methods getPosition, getDirection
 
