@@ -4,13 +4,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class testclass {
-
+public class TestClass {
     private Volvo240 set;
     @Before
     public void init() {
         set = new Volvo240();
         set.enginePower = 100;
+        set.currentSpeed = set.getCurrentSpeed();
+
 
     }
     @Test
@@ -19,14 +20,14 @@ public class testclass {
     }
 
     @Test
-    public void testIncrementSpeed(double amount){
+    public void testIncrementSpeed(){
         double speed1 = set.getCurrentSpeed() + set.speedFactor() * amount;
 
         if(speed1 < set.enginePower){
-            currentSpeed == speed1;
+            assertTrue(set.currentSpeed == speed1);
         }
         else{
-            set.incrementSpeed(amount).equals(set.enginePower);
+            assertTrue(set.currentSpeed == set.enginePower);
         }
 
 
