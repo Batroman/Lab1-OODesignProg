@@ -11,8 +11,7 @@ public class Car {
     public double yPosition; // The car y-position
     public int direction; // The direction of the car
     public Point2D.Double position; // The position of the car
-
-    private class Position implements Movable {
+    public class Position implements Movable {
         public void move() {
             position = getPosition();
             xPosition = position.getX();
@@ -93,14 +92,14 @@ public class Car {
 
     public void decrementSpeed(double amount) {
     }
-
-    // TODO fix this method according to lab pm
     public void gas(double amount) {
-        incrementSpeed(amount);
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+        }
     }
-
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
-        decrementSpeed(amount);
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
+        }
     }
 }
