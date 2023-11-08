@@ -21,27 +21,25 @@ public class Car {
                 case 0:
                     yPosition += getCurrentSpeed();
                     break;
-                case 90:
+                case 180:
                     yPosition -= getCurrentSpeed();
                     break;
-                case 180:
-                    xPosition -= getCurrentSpeed();
+                case 90:
+                    xPosition += getCurrentSpeed();
                     break;
                 case 270:
-                    xPosition += getCurrentSpeed();
+                    xPosition -= getCurrentSpeed();
                     break;
             }
             setPosition(xPosition, yPosition);
         }
 
         public void turnLeft() {
-            direction = getDirection() + 90;
-            direction = direction % 360;
+            direction = (getDirection() + 90) % 360;
         }
 
         public void turnRight() {
-            direction = getDirection() - 90;
-            direction = direction % 360;
+            direction = (getDirection() - 90) % 360;
         }
     }
 
