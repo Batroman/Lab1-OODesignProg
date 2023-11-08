@@ -82,15 +82,15 @@ public class Car {
         currentSpeed = 0;
     }
 
-
     public double speedFactor() {
         return 1.0; // Todo
     }
 
     public void incrementSpeed(double amount) {
+        currentSpeed = Math.min(getCurrentSpeed() * (1+amount), getEnginePower());
     }
-
     public void decrementSpeed(double amount) {
+        currentSpeed = Math.max(getCurrentSpeed() * (amount), 0);
     }
     public void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
