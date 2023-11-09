@@ -9,9 +9,24 @@ public class Car {
     public String modelName; // The car model name
     public double xPosition; // The car x-position
     public double yPosition; // The car y-position
-    public int direction; // The direction of the car
+    //public int direction;
     public Point2D.Double position; // The position of the car
+    public Position carPosition;
     public class Position implements Movable {
+        Point2D.Double position = new Point2D.Double(xPosition, yPosition);
+        public int direction;
+        public void setPosition(double xPosition, double yPosition) {
+            position.setLocation(xPosition, yPosition);
+        }
+        public Point2D.Double getPosition() {
+            return position;
+        }
+        public void setDirection(int angle) {
+            direction = angle;
+        }
+        public int getDirection() {
+            return direction;
+        }
         public void move() {
             position = getPosition();
             xPosition = position.getX();
@@ -42,17 +57,17 @@ public class Car {
         }
     }
 
-    public Point2D.Double getPosition() {
+    /*public Point2D.Double getPosition() {
         return position;
-    }
+    }*/
 
-    public void setPosition(double xPosition, double yPosition) {
+    /*public void setPosition(double xPosition, double yPosition) {
         position.setLocation(xPosition, yPosition);
-    }
+    }*/
 
-    public int getDirection() {
+    /*public int getDirection() {
         return direction;
-    }
+    }*/
 
     public int getNrDoors() {
         return nrDoors;

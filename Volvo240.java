@@ -14,9 +14,13 @@ public class Volvo240 extends Car {
 
         xPosition = 5;
         yPosition = 1;
-        direction = 0;
+        // direction = 0;
+        // Point2D.Double position = new Point2D.Double(xPosition, yPosition);
 
-        Point2D.Double position = new Point2D.Double(xPosition, yPosition);
+        carPosition = new Position();
+        carPosition.setPosition(xPosition, yPosition);
+        carPosition.setDirection(0);
+
     }
 
 
@@ -34,6 +38,7 @@ public class Volvo240 extends Car {
     public void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
+
 }
 
 
