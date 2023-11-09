@@ -62,21 +62,25 @@ public class TestCar {
     }
     @Test
     public void testMoveUp() {
+        set.carPosition.setDirection(0);
         set.carPosition.move();
         assertTrue(set.carPosition.getPosition().getY() == set.getCurrentSpeed() && set.carPosition.getPosition().getX() == 0);
     }
     @Test
     public void testMoveDown() {
+        set.carPosition.setDirection(180);
         set.carPosition.move();
         assertTrue(set.carPosition.getPosition().getY() == -set.getCurrentSpeed() && set.carPosition.getPosition().getX() == 0);
     }
     @Test
     public void testMoveRight() {
+        set.carPosition.setDirection(90);
         set.carPosition.move();
         assertTrue(set.carPosition.getPosition().getX() == set.getCurrentSpeed() && set.carPosition.getPosition().getY() == 0);
     }
     @Test
     public void testMoveLeft() {
+        set.carPosition.setDirection(270);
         set.carPosition.move();
         assertTrue(set.carPosition.getPosition().getX() == -set.getCurrentSpeed() && set.carPosition.getPosition().getY() == 0);
     }
