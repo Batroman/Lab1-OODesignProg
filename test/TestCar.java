@@ -12,6 +12,8 @@ public class TestCar {
     @Before
     public void init() {
         set = new Car();
+        set.carPosition.setPosition(0,0);
+        set.carPosition.setDirection(0);
     }
 
 
