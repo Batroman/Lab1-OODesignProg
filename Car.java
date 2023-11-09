@@ -49,7 +49,7 @@ public class Car {
         }
 
         public void turnLeft() {
-            direction = (getDirection() - 90) % 360;
+            direction = (getDirection() + 270) % 360;
         }
 
         public void turnRight() {
