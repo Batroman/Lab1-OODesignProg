@@ -10,7 +10,7 @@ public class Car {
     public double xPosition; // The car x-position
     public double yPosition; // The car y-position
     //public int direction;
-    public Point2D.Double position; // The position of the car
+    //public Point2D.Double position; // The position of the car
     public Position carPosition;
     public class Position implements Movable {
         Point2D.Double position = new Point2D.Double(xPosition, yPosition);
