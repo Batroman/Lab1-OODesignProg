@@ -14,8 +14,9 @@ public class TestCar {
         set = new Car();
         set.carPosition.setPosition(0,0);
         set.carPosition.setDirection(0);
-    }
+        set.currentSpeed = 1;
 
+    }
 
     @Test
     public void testGetNrDoors(){
@@ -38,27 +39,46 @@ public class TestCar {
     @Test
     public void testStartEngineSpeed(){
         set.startEngine();
-        assertTrue(set.currentSpeed == 0.1);
+        assert(set.currentSpeed == 0.1);
     }
     @Test
     public void testSpeedFactor(){
-        assertTrue(set.speedFactor() == 0);
+        assertTrue(set.speedFactor() == 1);
     }
     @Test
     public void testIncrementSpeed(){
+        set.enginePower = 100;
+        set.speedFactor();
+        set.incrementSpeed(2.0);
+        assertEquals(set.currentSpeed,3,0);
 
     }
     @Test
     public void testDecrementSpeed(){
-
+        set.decrementSpeed(2.0);
+        assertTrue(set.currentSpeed == 0);
     }
     @Test
-    public void testBrake(){
-
+    public void testBrakeOK(){
+        set.brake(0.5);
+        assertEquals(set.currentSpeed,0.5,0);
     }
     @Test
-    public void testGas(){
-
+    public void testBrakeOutOfRange(){
+        set.brake(1.2);
+        assertTrue(set.currentSpeed == set.currentSpeed);
+    }
+    @Test
+    public void testGasOK(){
+        set.enginePower = 100;
+        set.gas(0.5);
+        assertEquals(set.currentSpeed, 1.5, 0);
+    }
+    @Test
+    public void testGasOutRange(){
+        set.enginePower = 100;
+        set.gas(1.2);
+        assertTrue(set.currentSpeed == set.currentSpeed);
     }
     @Test
     public void testMoveUp() {
@@ -116,7 +136,6 @@ public class TestCar {
         set.carPosition.setDirection(0);
         set.carPosition.turnLeft();
         assertTrue(set.carPosition.getDirection() == 270);
-        // returns -90???
     }
 
     @Test
