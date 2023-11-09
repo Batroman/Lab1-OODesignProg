@@ -13,17 +13,8 @@ public class Saab95 extends Car{
         modelName = "Saab95";
         stopEngine();
 
-        xPosition = 1;
-        yPosition = 1;
-        //direction = 0;
-
-        //Point2D.Double position = new Point2D.Double(xPosition, yPosition);
-
-        carPosition = new Position();
-        carPosition.setPosition(xPosition, yPosition);
+        carPosition = new Position(1, 1);
         carPosition.setDirection(0);
-        //carPosition.move();
-
     }
 
     public void setTurboOn(){

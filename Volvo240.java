@@ -12,15 +12,8 @@ public class Volvo240 extends Car {
         modelName = "Volvo240";
         stopEngine();
 
-        xPosition = 5;
-        yPosition = 1;
-        // direction = 0;
-        // Point2D.Double position = new Point2D.Double(xPosition, yPosition);
-
-        carPosition = new Position();
-        carPosition.setPosition(xPosition, yPosition);
+        carPosition = new Position(5, 1);
         carPosition.setDirection(0);
-
     }
 
 
