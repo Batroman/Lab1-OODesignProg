@@ -1,113 +1,103 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Car {
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    public int direction;
-    public Point2D.Double position; // The position of the car
-    public Position carPosition;
-    public class Position implements Movable {
+public class Car implements Movable {
+    protected int nrDoors; // Number of doors on the car
+    protected double enginePower; // Engine power of the car
+    protected double currentSpeed; // The current speed of the car
+    protected Color color; // Color of the car
+    protected String modelName; // The car model name
+    protected int direction;
+    protected Point2D.Double position; // The position of the car
 
-        public Position(double xPosition, double yPosition) {
-            position = new Point2D.Double(xPosition, yPosition);
-        }
-        public void setPosition(double xPosition, double yPosition) {
-            position.setLocation(xPosition, yPosition);
-        }
-        public Point2D.Double getPosition() {
-            return position;
-        }
-        public void setDirection(int angle) {
-            direction = angle;
-        }
-        public int getDirection() {
-            return direction;
-        }
-        public void move() {
-            position = getPosition();
-            double xPosition = position.getX();
-            double yPosition = position.getY();
-            switch (getDirection()) {
-                case 0:
-                    yPosition += getCurrentSpeed();
-                    break;
-                case 180:
-                    yPosition -= getCurrentSpeed();
-                    break;
-                case 90:
-                    xPosition += getCurrentSpeed();
-                    break;
-                case 270:
-                    xPosition -= getCurrentSpeed();
-                    break;
-            }
-            setPosition(xPosition, yPosition);
-        }
-
-        public void turnLeft() {
-            direction = (getDirection() + 270) % 360;
-        }
-
-        public void turnRight() {
-            direction = (getDirection() + 90) % 360;
-        }
+    protected Car() {
+        position = new Point2D.Double(0, 0);
+        direction = 0;
     }
 
-    public Car() {
-        carPosition = new Position(1,1);
-        carPosition.setDirection(0);
-    }
-
-    public int getNrDoors() {
+    protected int getNrDoors() {
         return nrDoors;
     }
 
-    public double getEnginePower() {
+    protected double getEnginePower() {
         return enginePower;
     }
 
-    public double getCurrentSpeed() {
+    protected double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    public Color getColor() {
+    protected Color getColor() {
         return color;
     }
 
-    public void setColor(Color clr) {
+    protected void setColor(Color clr) {
         color = clr;
     }
 
-    public void startEngine() {
+    protected void startEngine() {
         currentSpeed = 0.1;
     }
 
-    public void stopEngine() {
+    protected void stopEngine() {
         currentSpeed = 0;
     }
 
-    public double speedFactor() {
+    protected double speedFactor() {
        return 1;
     }
 
-    public void incrementSpeed(double amount) {
+    protected void incrementSpeed(double amount) {
        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
-    public void decrementSpeed(double amount) {
+    protected void decrementSpeed(double amount) {
        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
-    public void gas(double amount) {
+    protected void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
         }
     }
-    public void brake(double amount) {
+    protected void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
         }
+    }
+    protected Point2D.Double getPosition() {
+        return position;
+    }
+    protected void setDirection(int angle) {
+        direction = angle;
+    }
+    protected int getDirection() {
+        return direction;
+    }
+    public void move() {
+        position = getPosition();
+        double xPosition = position.getX();
+        double yPosition = position.getY();
+        switch (getDirection()) {
+            case 0:
+                yPosition += getCurrentSpeed();
+                break;
+            case 180:
+                yPosition -= getCurrentSpeed();
+                break;
+            case 90:
+                xPosition += getCurrentSpeed();
+                break;
+            case 270:
+                xPosition -= getCurrentSpeed();
+                break;
+        }
+        position.setLocation(xPosition, yPosition);
+    }
+
+    public void turnLeft() {
+        direction = (getDirection() + 270) % 360;
+    }
+
+    public void turnRight() {
+        direction = (getDirection() + 90) % 360;
     }
 }

@@ -11,11 +11,6 @@ public class TestVolvo {
         set = new Volvo240();
         set.enginePower = 100;
         set.currentSpeed = set.getCurrentSpeed();
-
-        set.carPosition.setPosition(0,0);
-        set.carPosition.setDirection(0);
-
-
     }
     @Test
     public void testSpeedFactor(){

@@ -12,10 +12,9 @@ public class TestCar {
     @Before
     public void init() {
         set = new Car();
-        set.carPosition.setPosition(0,0);
-        set.carPosition.setDirection(0);
+        set.position.setLocation(0,0);
+        set.setDirection(0);
         set.currentSpeed = 1;
-
     }
 
     @Test
@@ -82,81 +81,82 @@ public class TestCar {
     }
     @Test
     public void testMoveUp() {
-        set.carPosition.setDirection(0);
-        set.carPosition.move();
-        assertTrue(set.carPosition.getPosition().getY() == set.getCurrentSpeed() && set.carPosition.getPosition().getX() == 0);
+        set.setDirection(0);
+        set.move();
+        assertTrue(set.getPosition().getY() == set.getCurrentSpeed() && set.getPosition().getX() == 0);
     }
+
     @Test
     public void testMoveDown() {
-        set.carPosition.setDirection(180);
-        set.carPosition.move();
-        assertTrue(set.carPosition.getPosition().getY() == -set.getCurrentSpeed() && set.carPosition.getPosition().getX() == 0);
+        set.setDirection(180);
+        set.move();
+        assertTrue(set.getPosition().getY() == -set.getCurrentSpeed() && set.getPosition().getX() == 0);
     }
     @Test
     public void testMoveRight() {
-        set.carPosition.setDirection(90);
-        set.carPosition.move();
-        assertTrue(set.carPosition.getPosition().getX() == set.getCurrentSpeed() && set.carPosition.getPosition().getY() == 0);
+        set.setDirection(90);
+        set.move();
+        assertTrue(set.getPosition().getX() == set.getCurrentSpeed() && set.getPosition().getY() == 0);
     }
     @Test
     public void testMoveLeft() {
-        set.carPosition.setDirection(270);
-        set.carPosition.move();
-        assertTrue(set.carPosition.getPosition().getX() == -set.getCurrentSpeed() && set.carPosition.getPosition().getY() == 0);
+        set.setDirection(270);
+        set.move();
+        assertTrue(set.getPosition().getX() == -set.getCurrentSpeed() && set.getPosition().getY() == 0);
     }
     @Test
     public void testTurnRightFrom0() {
-        set.carPosition.turnRight();
-        assertTrue(set.carPosition.getDirection() == 90);
+        set.turnRight();
+        assertTrue(set.getDirection() == 90);
     }
 
     @Test
     public void testTurnRightFrom90() {
-        set.carPosition.setDirection(90);
-        set.carPosition.turnRight();
-        assertTrue(set.carPosition.getDirection() == 180);
+        set.setDirection(90);
+        set.turnRight();
+        assertTrue(set.getDirection() == 180);
     }
 
     @Test
     public void testTurnRightFrom180() {
-        set.carPosition.setDirection(180);
-        set.carPosition.turnRight();
-        assertTrue(set.carPosition.getDirection() == 270);
+        set.setDirection(180);
+        set.turnRight();
+        assertTrue(set.getDirection() == 270);
     }
 
     @Test
     public void testTurnRightFrom270() {
-        set.carPosition.setDirection(270);
-        set.carPosition.turnRight();
-        assertTrue(set.carPosition.getDirection() == 0);
+        set.setDirection(270);
+        set.turnRight();
+        assertTrue(set.getDirection() == 0);
     }
 
     @Test
     public void testTurnLeftFrom0() {
-        set.carPosition.setDirection(0);
-        set.carPosition.turnLeft();
-        assertTrue(set.carPosition.getDirection() == 270);
+        set.setDirection(0);
+        set.turnLeft();
+        assertTrue(set.getDirection() == 270);
     }
 
     @Test
     public void testTurnLeftFrom90() {
-        set.carPosition.setDirection(90);
-        set.carPosition.turnLeft();
-        assertTrue(set.carPosition.getDirection() == 0);
+        set.setDirection(90);
+        set.turnLeft();
+        assertTrue(set.getDirection() == 0);
     }
 
     @Test
     public void testTurnLeftFrom180() {
-        set.carPosition.setDirection(180);
-        set.carPosition.turnLeft();
-        assertTrue(set.carPosition.getDirection() == 90);
+        set.setDirection(180);
+        set.turnLeft();
+        assertTrue(set.getDirection() == 90);
     }
 
     @Test
     public void testTurnLeftFrom270() {
-        set.carPosition.setDirection(270);
-        set.carPosition.turnLeft();
-        assertTrue(set.carPosition.getDirection() == 180);
+        set.setDirection(270);
+        set.turnLeft();
+        assertTrue(set.getDirection() == 180);
     }
 
 }
