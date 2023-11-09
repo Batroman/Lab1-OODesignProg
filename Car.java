@@ -69,6 +69,10 @@ public class Car {
         return direction;
     }*/
 
+    public Car() {
+        carPosition = new Position();
+    }
+
     public int getNrDoors() {
         return nrDoors;
     }
