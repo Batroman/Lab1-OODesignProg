@@ -12,6 +12,9 @@ public class TestVolvo {
         set.enginePower = 100;
         set.currentSpeed = set.getCurrentSpeed();
 
+        set.carPosition.setPosition(0,0);
+        set.carPosition.setDirection(0);
+
 
     }
     @Test
@@ -30,10 +33,5 @@ public class TestVolvo {
     public void testDecrementSpeed(){
         set.decrementSpeed(2.0);
         assertTrue(set.getCurrentSpeed() == 0);
-    }
-
-    @Test
-    public void testMove() {
-        set.carPosition.move();
     }
 }
