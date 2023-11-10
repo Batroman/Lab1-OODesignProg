@@ -5,7 +5,7 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
 
-    protected Volvo240() {
+    public Volvo240() {
         nrDoors = 4;
         color = Color.black;
         enginePower = 100;

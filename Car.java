@@ -10,36 +10,36 @@ public class Car implements Movable {
     protected int direction;
     protected Point2D.Double position; // The position of the car
 
-    protected Car() {
+    public Car() {
         position = new Point2D.Double(0, 0);
         direction = 0;
     }
 
-    protected int getNrDoors() {
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    protected double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr) {
+    public void setColor(Color clr) {
         color = clr;
     }
 
-    protected void startEngine() {
+    public void startEngine() {
         currentSpeed = 0.1;
     }
-
-    protected void stopEngine() {
+    // Bör vara public för att användaren kan starta/stänga av motorn
+    public void stopEngine() {
         currentSpeed = 0;
     }
 
@@ -53,23 +53,23 @@ public class Car implements Movable {
     protected void decrementSpeed(double amount) {
        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
-    protected void gas(double amount) {
+    public void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
         }
     }
-    protected void brake(double amount) {
+    public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
         }
     }
-    protected Point2D.Double getPosition() {
+    public Point2D.Double getPosition() {
         return position;
     }
-    protected void setDirection(int angle) {
+    public void setDirection(int angle) {
         direction = angle;
     }
-    protected int getDirection() {
+    public int getDirection() {
         return direction;
     }
     public void move() {

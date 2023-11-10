@@ -65,7 +65,7 @@ public class TestCar {
     @Test
     public void testBrakeOutOfRange(){
         set.brake(1.2);
-        assertTrue(set.currentSpeed == set.currentSpeed);
+        assertEquals(set.currentSpeed, 1,0);
     }
     @Test
     public void testGasOK(){
@@ -77,7 +77,7 @@ public class TestCar {
     public void testGasOutRange(){
         set.enginePower = 100;
         set.gas(1.2);
-        assertTrue(set.currentSpeed == set.currentSpeed);
+        assertEquals(set.currentSpeed,1,0);
     }
     @Test
     public void testMoveUp() {

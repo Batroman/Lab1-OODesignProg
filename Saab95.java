@@ -5,7 +5,7 @@ public class Saab95 extends Car{
 
     private boolean turboOn;
 
-    protected Saab95(){
+    public Saab95(){
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
@@ -17,11 +17,11 @@ public class Saab95 extends Car{
         direction = 0;
     }
 
-    protected void setTurboOn(){
+    public void setTurboOn(){
 	    turboOn = true;
     }
 
-    protected void setTurboOff(){
+    public void setTurboOff(){
 	    turboOn = false;
     }
 
