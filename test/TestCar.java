@@ -11,34 +11,33 @@ public class TestCar {
 
     @Before
     public void init() {
-        set = new Car();
-        set.position.setLocation(0,0);
+        set = new Car(4,100, Color.blue,"MyCar",0,0,0);
         set.setDirection(0);
         set.currentSpeed = 1;
     }
 
     @Test
     public void testGetNrDoors(){
-        assertTrue(set.nrDoors == set.getNrDoors());
+        assertTrue(set.getNrDoors() == 4);
     }
     @Test
     public void testGetEnginePower(){
-        assertTrue(set.enginePower == set.getEnginePower());
+        assertTrue(set.getEnginePower() == 100);
     }
     @Test
     public void testGetColor(){
-        assertTrue(set.color == set.getColor());
+        assertTrue(set.getColor() == Color.blue);
     }
     @Test
     public void testSetColor(){
         set.setColor(Color.red);
-        assertTrue(set.color == Color.red);
+        assertTrue(set.getColor() == Color.red);
 
     }
     @Test
     public void testStartEngineSpeed(){
         set.startEngine();
-        assert(set.currentSpeed == 0.1);
+        assert(set.getCurrentSpeed() == 0.1);
     }
     @Test
     public void testSpeedFactor(){
@@ -46,38 +45,43 @@ public class TestCar {
     }
     @Test
     public void testIncrementSpeed(){
-        set.enginePower = 100;
         set.speedFactor();
         set.incrementSpeed(2.0);
-        assertEquals(set.currentSpeed,3,0);
+        assertEquals(set.getCurrentSpeed(),3,0);
 
     }
     @Test
     public void testDecrementSpeed(){
         set.decrementSpeed(2.0);
-        assertTrue(set.currentSpeed == 0);
+        assertTrue(set.getCurrentSpeed() == 0);
     }
     @Test
-    public void testBrakeOK(){
+    public void testBrakeInRange(){
         set.brake(0.5);
-        assertEquals(set.currentSpeed,0.5,0);
+        assertEquals(set.getCurrentSpeed(),0.5,0);
     }
     @Test
     public void testBrakeOutOfRange(){
         set.brake(1.2);
-        assertTrue(set.currentSpeed == set.currentSpeed);
+        // currentSpeed should not change if the amount sent to gas is out of range
+        assertTrue(set.getCurrentSpeed() == 1);
     }
     @Test
-    public void testGasOK(){
-        set.enginePower = 100;
+    public void testGasInRange(){
         set.gas(0.5);
-        assertEquals(set.currentSpeed, 1.5, 0);
+        assertEquals(set.getCurrentSpeed(), 1.5, 0);
     }
     @Test
-    public void testGasOutRange(){
-        set.enginePower = 100;
+    public void testGasOutOfRange(){
         set.gas(1.2);
-        assertTrue(set.currentSpeed == set.currentSpeed);
+        // currentSpeed should not change if the amount sent to gas is out of range
+        assertTrue(set.getCurrentSpeed() == 1);
+    }
+
+    @Test
+    public void testStopEngine() {
+        set.stopEngine();
+        assertTrue(set.getCurrentSpeed() == 0);
     }
     @Test
     public void testMoveUp() {
@@ -103,6 +107,18 @@ public class TestCar {
         set.setDirection(270);
         set.move();
         assertTrue(set.getPosition().getX() == -set.getCurrentSpeed() && set.getPosition().getY() == 0);
+    }
+
+    @Test
+    public void testMoveAngularX() {
+        set.move(Math.PI / 3);
+        assertEquals(set.getXPosition(), 1/2, 0.1 );
+    }
+
+    @Test
+    public void testMoveAngularY() {
+        set.move(Math.PI / 3);
+        assertEquals(set.getYPosition(),Math.sqrt(3)/2, 0.2 );
     }
     @Test
     public void testTurnRightFrom0() {

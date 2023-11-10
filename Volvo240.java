@@ -5,14 +5,11 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
 
-    protected Volvo240() {
-        nrDoors = 4;
-        color = Color.black;
-        enginePower = 100;
-        modelName = "Volvo240";
-        stopEngine();
-        position.setLocation(5, 0);
-        direction = 0;
+    public Volvo240(int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+
+        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
+        setPosition(xPos,yPos);
+        currentSpeed = 0;
     }
 
     @Override
@@ -28,8 +25,8 @@ public class Volvo240 extends Car {
     @Override
     protected void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-    }
 
+    }
 }
 
 

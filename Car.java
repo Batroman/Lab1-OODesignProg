@@ -2,44 +2,51 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 public class Car implements Movable {
-    protected int nrDoors; // Number of doors on the car
-    protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
-    protected Color color; // Color of the car
-    protected String modelName; // The car model name
-    protected int direction;
-    protected Point2D.Double position; // The position of the car
+    private int nrDoors;
+    private final double enginePower;
+    protected double currentSpeed;
+    private Color color;
+    private String modelName;
+    private int direction;
+    private double xPos;
+    private double yPos;
+    private Point2D.Double position; // The position of the car
 
-    protected Car() {
-        position = new Point2D.Double(0, 0);
-        direction = 0;
+    public Car (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.direction = direction;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.position = new Point2D.Double(xPos, yPos);
     }
-
-    protected int getNrDoors() {
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    protected double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr) {
+    public void setColor(Color clr) {
         color = clr;
     }
 
-    protected void startEngine() {
+    public void startEngine() {
         currentSpeed = 0.1;
     }
 
-    protected void stopEngine() {
+    public void stopEngine() {
         currentSpeed = 0;
     }
 
@@ -53,23 +60,36 @@ public class Car implements Movable {
     protected void decrementSpeed(double amount) {
        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
-    protected void gas(double amount) {
+    public void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
         }
     }
-    protected void brake(double amount) {
+    public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
         }
     }
-    protected Point2D.Double getPosition() {
+
+    protected void setPosition(double x, double y) {
+        position.setLocation(x,y);
+    }
+
+    public Point2D.Double getPosition() {
         return position;
+    }
+
+    public double getXPosition() {
+        return position.getX();
+    }
+
+    public double getYPosition() {
+        return position.getY();
     }
     protected void setDirection(int angle) {
         direction = angle;
     }
-    protected int getDirection() {
+    public int getDirection() {
         return direction;
     }
     public void move() {
@@ -91,6 +111,13 @@ public class Car implements Movable {
                 break;
         }
         position.setLocation(xPosition, yPosition);
+    }
+    public void move(double angle) {
+        double xDelta = position.getX() + getCurrentSpeed()*Math.cos(angle);
+        double yDelta = position.getY() + getCurrentSpeed()*Math.sin(angle);
+        System.out.println(xDelta + " " + 1.0f/2.0f);
+        System.out.println(yDelta + " " + Math.sqrt(3)/2);
+        position.setLocation(xDelta, yDelta);
     }
 
     public void turnLeft() {

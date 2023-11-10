@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
+
 import static org.junit.Assert.*;
 
 
@@ -8,9 +10,8 @@ public class TestVolvo {
     private Volvo240 set;
     @Before
     public void init() {
-        set = new Volvo240();
-        set.enginePower = 100;
-        set.currentSpeed = set.getCurrentSpeed();
+        set = new Volvo240(4,100, Color.black,"Volvo240",0,0,0);
+        set.currentSpeed = 1;
     }
     @Test
     public void testSpeedFactor(){
@@ -19,14 +20,14 @@ public class TestVolvo {
 
     @Test
     public void testIncrementSpeed(){
-        set.incrementSpeed(2.0);
-        assertTrue(set.getCurrentSpeed() == 2.5);
+        set.incrementSpeed(0.5);
+        assertTrue(set.getCurrentSpeed() == 1.625);
 
     }
 
     @Test
     public void testDecrementSpeed(){
-        set.decrementSpeed(2.0);
-        assertTrue(set.getCurrentSpeed() == 0);
+        set.decrementSpeed(.5);
+        assertTrue(set.getCurrentSpeed() == 0.375);
     }
 }
