@@ -11,19 +11,18 @@ public class Volvo240 extends Car {
         enginePower = 100;
         modelName = "Volvo240";
         stopEngine();
-
         position.setLocation(5, 0);
         direction = 0;
     }
 
     @Override
     protected double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     @Override
     protected void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     @Override
