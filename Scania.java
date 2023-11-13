@@ -8,6 +8,8 @@ public class Scania extends Car {
         stopEngine();
         currentTruckbedAngle = 0;
 
+
+
     }
 
     protected double getTruckbedAngle() {
@@ -23,7 +25,7 @@ public class Scania extends Car {
 
     protected void increaseTruckbedAngle(double angle) {
         if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.min(currentTruckbedAngle - angle, 70);
+            currentTruckbedAngle = Math.min(currentTruckbedAngle + angle, 70);
         }
     }
 
@@ -31,6 +33,7 @@ public class Scania extends Car {
     public void startEngine() {
         if (getTruckbedAngle() == 0) {
             currentSpeed = 0.1;
+
         }
     }
 }
