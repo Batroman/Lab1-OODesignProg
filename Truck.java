@@ -4,9 +4,16 @@ public class Truck extends Car{
 
     protected int currentTruckbedAngle;
 
-    public Truck(int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos, int currentTruckbedAngle) {
+    public Truck(int nrDoors,
+                 double enginePower,
+                 Color color,
+                 String modelName,
+                 int direction,
+                 double xPos,
+                 double yPos) {
+
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
-        currentTruckbedAngle = 0;    
+        currentTruckbedAngle = 0;
     }
 
     public double getTruckbedAngle() {
