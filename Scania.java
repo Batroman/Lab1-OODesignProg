@@ -3,8 +3,8 @@ import java.awt.*;
 public class Scania extends Car {
     private double currentTruckbedAngle;
 
-    protected Scania() {
-        super(2, 250, Color.green, "ScaniaTruck", 0, 0, 0);
+    public Scania(int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         stopEngine();
         currentTruckbedAngle = 0;
 
