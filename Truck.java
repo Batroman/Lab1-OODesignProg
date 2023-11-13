@@ -21,7 +21,7 @@ public class Truck extends Car{
 
     public void increaseTruckbedAngle(int angle) {
         if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.min(currentTruckbedAngle - angle, 70);
+            currentTruckbedAngle = Math.min(currentTruckbedAngle + angle, 70);
         }
     }
 
