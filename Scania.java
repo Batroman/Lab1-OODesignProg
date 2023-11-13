@@ -17,7 +17,7 @@ public class Scania extends Truck{
     @Override
     public void increaseTruckbedAngle(int angle) {
         if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.min(currentTruckbedAngle - angle, 70);
+            currentTruckbedAngle = Math.min(currentTruckbedAngle + angle, 70);
         }
     }
 
@@ -25,6 +25,7 @@ public class Scania extends Truck{
     public void startEngine() {
         if (getTruckbedAngle() == 0) {
             currentSpeed = 0.1;
+
         }
     }
 }
