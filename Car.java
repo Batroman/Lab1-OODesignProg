@@ -4,10 +4,10 @@ import java.awt.geom.Point2D;
 public class Car implements Movable {
     private final int nrDoors;
     private final double enginePower;
-    
+
     protected double currentSpeed;
     private Color color;
-    private final String modelName;
+    protected final String modelName;
     private int direction;
     private double xPos;
     private double yPos;
@@ -41,6 +41,10 @@ public class Car implements Movable {
 
     public void setColor(Color clr) {
         color = clr;
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public void startEngine() {
