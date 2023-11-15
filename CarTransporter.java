@@ -41,7 +41,7 @@ public class CarTransporter extends Truck{
         }
     }
 
-    public boolean checkDistance(Car other) {
+    public boolean checkDistance(Vehicle other) {
         double distance = Point2D.distance(getXPosition(), getYPosition(),
                 other.getXPosition(), other.getYPosition());
         if (distance <= 2) {
@@ -50,7 +50,7 @@ public class CarTransporter extends Truck{
         else {return false;}
     }
 
-    protected void loadCarTransporter(Car other) {
+    protected void loadCarTransporter(Vehicle other) {
         if (checkDistance(other) && getTruckbedAngle() == 0 && loadedCars.size() < maxLoadingCapacity) {
             loadedCars.add(other.getModelName());
         }

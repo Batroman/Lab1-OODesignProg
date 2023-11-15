@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Volvo240 extends Car {
+public class Volvo240 extends Vehicle {
 
     private final static double trimFactor = 1.25;
 

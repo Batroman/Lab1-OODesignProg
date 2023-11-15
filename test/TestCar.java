@@ -7,11 +7,11 @@ import static org.junit.Assert.*;
 
 public class TestCar {
 
-    private Car set;
+    private Vehicle set;
 
     @Before
     public void init() {
-        set = new Car(4,100, Color.blue,"MyCar",0,0,0);
+        set = new Vehicle(4,100, Color.blue,"MyCar",0,0,0);
         set.setDirection(0);
         set.currentSpeed = 1;
     }

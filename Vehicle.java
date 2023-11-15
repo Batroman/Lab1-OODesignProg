@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Car implements Movable {
+public class Vehicle implements Movable {
     private final int nrDoors;
     private final double enginePower;
 
@@ -13,7 +13,7 @@ public class Car implements Movable {
     private double yPos;
     private Point2D.Double position; // The position of the car
 
-    public Car (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+    public Vehicle (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
