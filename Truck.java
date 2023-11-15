@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Truck extends Car{
+public abstract class Truck extends Car{
 
     protected int currentTruckbedAngle;
 
@@ -20,17 +20,13 @@ public class Truck extends Car{
         return currentTruckbedAngle;
     }
 
-    public void reduceTruckbedAngle(int angle) {
-        if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.max(currentTruckbedAngle - angle, 0);
-        }
-    }
+    public void reduceTruckbedAngle(int angle){}
 
-    public void increaseTruckbedAngle(int angle) {
-        if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.min(currentTruckbedAngle + angle, 70);
-        }
-    }
+    public void reduceTruckbedAngle(){}
+
+    public void increaseTruckbedAngle(int angle){}
+
+    public void increaseTruckbedAngle(){}
 
     @Override
     public void startEngine() {
