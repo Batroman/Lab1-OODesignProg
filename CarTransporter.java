@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class CarTransporter extends Vehicle{
     private Truckbed parent;
-    // private Storage storageparent;
-    protected ArrayList<String> loadedCars = new ArrayList<>(6);
+    private Storage storageparent;
+
+    public int maxLoadingCapacity = 6;
+    protected ArrayList<String> loadedCars = new ArrayList<>(maxLoadingCapacity);
 
     public CarTransporter(int nrDoors,
                           double enginePower,
@@ -48,16 +50,22 @@ public class CarTransporter extends Vehicle{
     }
 
     protected void loadCarTransporter(Vehicle other) {
-        if (checkDistance(other) && getTruckbedAngle() == 0) {
-            loadedCars.add(other.getModelName());
+        if (checkDistance(other) && getTruckbedAngle() == 0 && loadedCars.size() < maxLoadingCapacity) {
+            storageparent.loadCarTransporter(other);
+            other.setPosition(getXPosition(), getYPosition()); //set loaded car's pos to same as transporter
         }
-        // other.getPosition() = getPosition();
-
     }
 
     protected void unloadCarTransporter(){
-        if(getTruckbedAngle() == 0){
-            loadedCars.remove(loadedCars.size()-1);
+        if(getTruckbedAngle() == 0 && getCurrentSpeed() == 0){
+
+            //car to be unloaded
+            Vehicle unloadedCar = storageparent.loadedCars.get(storageparent.loadedCars.size()-1);
+
+            storageparent.unloadCarTransporter();
+
+            // set new position for unloaded car
+            unloadedCar.setPosition(getXPosition()-1, getYPosition()-1);
         }
 
     }
