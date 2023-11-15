@@ -1,4 +1,4 @@
-import java.awt.*;
+/*import java.awt.*;
 
 public abstract class Truck extends Vehicle{
 
@@ -35,4 +35,4 @@ public abstract class Truck extends Vehicle{
         }
     }
 
-}
+}*/

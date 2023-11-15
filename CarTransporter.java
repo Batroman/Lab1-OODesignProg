@@ -2,8 +2,9 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-public class CarTransporter extends Truck{
-
+public class CarTransporter extends Vehicle{
+    private Truckbed parent;
+    // private Storage storageparent;
     protected ArrayList<String> loadedCars = new ArrayList<>(6);
 
     public CarTransporter(int nrDoors,
@@ -15,31 +16,29 @@ public class CarTransporter extends Truck{
                           double yPos){
 
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
-        currentTruckbedAngle = 0;
+        this.parent = new Truckbed();
+    }
+    public double getTruckbedAngle() {
+        return parent.getTruckbedAngle();
     }
 
-    @Override
     public void reduceTruckbedAngle() {
         if (getCurrentSpeed() == 0) {
-            currentTruckbedAngle = 0;
+            parent.reduceTruckbedAngle(70);
         }
     }
-
-    @Override
     public void increaseTruckbedAngle() {
         if (getCurrentSpeed() == 0) {
-            currentTruckbedAngle = 70;
+            parent.increaseTruckbedAngle(70);
         }
     }
-
- /*   @Override
+    @Override
     public void startEngine() {
         if (getTruckbedAngle() == 0) {
             currentSpeed = 0.1;
         }
-    }*/
-
-    public boolean checkDistance(Car other) {
+    }
+    public boolean checkDistance(Vehicle other) {
         double distance = Point2D.distance(getXPosition(), getYPosition(),
                 other.getXPosition(), other.getYPosition());
         if (distance <= 2) {
@@ -48,17 +47,17 @@ public class CarTransporter extends Truck{
         else {return false;}
     }
 
-    protected void loadCarTransporter(Car other) {
+    protected void loadCarTransporter(Vehicle other) {
         if (checkDistance(other) && getTruckbedAngle() == 0) {
             loadedCars.add(other.getModelName());
         }
-       other.getPosition() = getPosition();
+        // other.getPosition() = getPosition();
+
     }
 
     protected void unloadCarTransporter(){
         if(getTruckbedAngle() == 0){
             loadedCars.remove(loadedCars.size()-1);
-            loadedCars.get(loadedCars.size() - 1);
         }
 
     }

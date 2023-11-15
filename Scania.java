@@ -1,7 +1,7 @@
 import java.awt.*;
 
-public class Scania extends Truck{
-
+public class Scania extends Vehicle{
+    private Truckbed parent;
     public Scania(int nrDoors,
                   double enginePower,
                   Color color,
@@ -12,18 +12,20 @@ public class Scania extends Truck{
 
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         stopEngine();
+        this.parent = new Truckbed();
     }
-
+    public double getTruckbedAngle() {
+        return parent.getTruckbedAngle();
+    }
     public void reduceTruckbedAngle(int angle) {
         if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.max(currentTruckbedAngle - angle, 0);
+            parent.reduceTruckbedAngle(angle);
         }
     }
 
-
     public void increaseTruckbedAngle(int angle) {
         if (getCurrentSpeed() == 0 && angle > 0) {
-            currentTruckbedAngle = Math.min(currentTruckbedAngle + angle, 70);
+            parent.increaseTruckbedAngle(angle);
         }
     }
 
