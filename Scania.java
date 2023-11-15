@@ -8,12 +8,13 @@ public class Scania extends Truck{
                   String modelName,
                   int direction,
                   double xPos,
-                  double yPos,
-                  int currentTruckbedAngle) {
+                  double yPos) {
 
-        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos, currentTruckbedAngle);
+        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         stopEngine();
     }
+
+
 }
 
 

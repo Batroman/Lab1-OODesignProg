@@ -2,7 +2,14 @@ import java.awt.*;
 
 public class CarTransporter extends Truck{
 
-    public CarTransporter(int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos){
+    public CarTransporter(int nrDoors,
+                          double enginePower,
+                          Color color,
+                          String modelName,
+                          int direction,
+                          double xPos,
+                          double yPos){
+
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         currentTruckbedAngle = 0;
     }
