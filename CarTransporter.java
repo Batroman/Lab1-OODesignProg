@@ -1,9 +1,11 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 public class CarTransporter extends Truck{
 
-    protected List loadedCars = new List(6);
+    public int maxLoadingCapacity = 6;
+    public ArrayList<String> loadedCars = new ArrayList<String>();
 
     public CarTransporter(int nrDoors,
                           double enginePower,
@@ -42,16 +44,15 @@ public class CarTransporter extends Truck{
     public boolean checkDistance(Car other) {
         double distance = Point2D.distance(getXPosition(), getYPosition(),
                 other.getXPosition(), other.getYPosition());
-        if (getTruckbedAngle() == 0 && distance <= 2) {
+        if (distance <= 2) {
             return true;
         }
         else {return false;}
     }
 
     protected void loadCarTransporter(Car other) {
-        if (checkDistance(other)) {
+        if (checkDistance(other) && getTruckbedAngle() == 0 && loadedCars.size() < maxLoadingCapacity) {
             loadedCars.add(other.getModelName());
-            System.out.println(other.getModelName());
         }
     }
     
