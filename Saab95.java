@@ -10,7 +10,6 @@ public class Saab95 extends Car{
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         setPosition(xPos,yPos);
         turboOn = false;
-        currentSpeed = 1;
     }
 
     protected void setTurboOn(){

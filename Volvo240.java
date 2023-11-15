@@ -9,7 +9,6 @@ public class Volvo240 extends Car {
 
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         setPosition(xPos,yPos);
-        currentSpeed = 0;
     }
     @Override
     protected double speedFactor() {

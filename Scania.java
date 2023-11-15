@@ -7,9 +7,6 @@ public class Scania extends Car {
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         stopEngine();
         currentTruckbedAngle = 0;
-
-
-
     }
 
     protected double getTruckbedAngle() {
