@@ -117,13 +117,13 @@ public class Car implements Movable {
         }
         position.setLocation(xPosition, yPosition);
     }
-    public void move(double angle) {
+ /*   public void move(double angle) {
         double xDelta = position.getX() + getCurrentSpeed()*Math.cos(angle);
         double yDelta = position.getY() + getCurrentSpeed()*Math.sin(angle);
         System.out.println(xDelta + " " + 1.0f/2.0f);
         System.out.println(yDelta + " " + Math.sqrt(3)/2);
         position.setLocation(xDelta, yDelta);
-    }
+    }*/
 
     public void turnLeft() {
         direction = (getDirection() + 270) % 360;
