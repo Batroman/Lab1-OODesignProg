@@ -70,4 +70,34 @@ public class CarTransporter extends Vehicle{
         }
 
     }
+
+    @Override
+    public void move() {
+        double xPosition = getPosition().getX();
+        double yPosition = getPosition().getY();
+        switch (getDirection()) {
+            case 0:
+                yPosition += getCurrentSpeed();
+                break;
+            case 180:
+                yPosition -= getCurrentSpeed();
+                break;
+            case 90:
+                xPosition += getCurrentSpeed();
+                break;
+            case 270:
+                xPosition -= getCurrentSpeed();
+                break;
+        }
+        setPosition(xPosition, yPosition);
+        moveLoadedCars();
+    }
+
+    private void moveLoadedCars() {
+        for (Vehicle vehicle : storageParent.loadedCars) {
+            vehicle.setPosition(getXPosition(), getYPosition());
+        }
+    }
+
+
 }
