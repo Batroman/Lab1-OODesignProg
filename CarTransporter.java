@@ -52,7 +52,7 @@ public class CarTransporter extends Vehicle{
 
     protected void loadCarTransporter(Vehicle other) {
         if (checkDistance(other) && getTruckbedAngle() == 0 && loadedCars.size() < maxLoadingCapacity) {
-            storageParent.loadCarTransporter(other);
+            storageParent.loadCar(other);
             other.setPosition(getXPosition(), getYPosition()); //set loaded car's pos to same as transporter
         }
     }
@@ -63,7 +63,7 @@ public class CarTransporter extends Vehicle{
             //car to be unloaded
             Vehicle unloadedCar = storageParent.loadedCars.get(storageParent.loadedCars.size()-1);
 
-            storageParent.unloadCarTransporter();
+            storageParent.unloadCar();
 
             // set new position for unloaded car
             unloadedCar.setPosition(getXPosition()-1, getYPosition()-1);

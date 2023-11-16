@@ -5,11 +5,11 @@ public class Storage {
 
     public ArrayList<Vehicle> loadedCars = new ArrayList<Vehicle>();
 
-    protected void loadCarTransporter(Vehicle other) {
+    protected void loadCar(Vehicle other) {
             loadedCars.add(other);
     }
 
-    protected void unloadCarTransporter(){
+    protected void unloadCar(){
             loadedCars.remove(loadedCars.size()-1);
     }
 }

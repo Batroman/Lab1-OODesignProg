@@ -42,9 +42,8 @@ public class TestCarTransporter {
 
     @Test
     public void testLoadCarTransporter() {
-        set.loadCarTransporter(VolvoObj);
-        assertTrue(set.loadedCars.size() == 1);
-        assertEquals("Volvo240", set.loadedCars.get(0));
+        set.loadCarTransporter(VolvoObj);;
+        assertEquals(set.loadedCars.size(),1,0);
     }
 
     @Test
@@ -53,6 +52,14 @@ public class TestCarTransporter {
             set.loadCarTransporter(VolvoObj);
         }
         assertTrue(set.loadedCars.size() >= set.maxLoadingCapacity);
+    }
+
+    @Test
+    public void testUnloadCarTransporter(){
+        set.loadCarTransporter(VolvoObj);
+        set.unloadCarTransporter();
+        assertTrue(set.loadedCars.isEmpty());
+
     }
 }
 
