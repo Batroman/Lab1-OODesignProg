@@ -1,21 +1,24 @@
 import java.util.ArrayList;
 
-public class Storage {
-
-    public ArrayList loadedCars;
-
+public class Storage<T extends Vehicle> {
+    private final int maxLoad;
+    private ArrayList<T> storageContents;
     public Storage(int maxLoadingCapacity) {
-       // this.loadedCars = loadedCars;
-        ArrayList<Vehicle> loadedCars = new ArrayList<>(maxLoadingCapacity);
+        storageContents = new ArrayList<>(maxLoadingCapacity);
+        this.maxLoad = maxLoadingCapacity;
     }
 
-    protected void loadStorage(Vehicle other, int maxLoad) {
-        if (loadedCars.size() < maxLoad && !(other instanceof CarTransporter)) {}
-            loadedCars.add(other);
+    protected void loadStorage(T car) {
+        if (storageContents.size() < maxLoad) {}
+            storageContents.add(car);
     }
 
     protected void unloadStorage(){
-            loadedCars.remove(loadedCars.size()-1);
+            storageContents.removeLast();
+    }
+
+    protected ArrayList<T> getContents(){
+        return storageContents;
     }
 
 }

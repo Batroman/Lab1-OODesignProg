@@ -1,9 +1,10 @@
-public class CarWorkshop<Brand> {
+public class CarWorkshop<T extends Vehicle> {
     private Storage parent;
-    private Brand typeOfCar;
+    private T typeOfCar;
 
-    public CarWorkshop(Brand typeOfCar){
+    public CarWorkshop(T typeOfCar){
         this.typeOfCar = typeOfCar;
-       // CarWorkshop<Brand> NyVerkstad = new CarWorkshop<>();
+        // CarWorkshop<T> NyVerkstad = new CarWorkshop<>();
     }
 }
+

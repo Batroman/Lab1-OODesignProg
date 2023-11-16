@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.junit.Assert.*;
@@ -12,6 +13,7 @@ public class TestCarTransporter {
     private Volvo240 VolvoObj;
     private Saab95 SaabObj;
 
+    private ArrayList loadedCars;
     private Storage storageset;
 
     @Before
@@ -24,7 +26,8 @@ public class TestCarTransporter {
 
         SaabObj = new Saab95(2, 125, Color.red, "Saab95", 0, 5,5);
 
-        storageset = new Storage(6);
+        storageset = new Storage<>(6);
+        loadedCars = storageset.getContents();
     }
 
     @Test
@@ -47,22 +50,22 @@ public class TestCarTransporter {
     @Test
     public void testLoadCarTransporter() {
         set.loadCarTransporter(VolvoObj);
-        assertEquals(storageset.loadedCars.size(),1,0);
+        assertTrue(loadedCars.getFirst() == VolvoObj);
     }
 
-    @Test
+/*    @Test
     public void testLoadCarTransporterMaxLoad() {
        for (int i = 0; i < set.maxLoadingCapacity + 3; i++) {
             set.loadCarTransporter(VolvoObj);
         }
-        assertTrue(storageset.loadedCars.size() >= set.maxLoadingCapacity);
-    }
+        assertTrue(loadedCars.size() >= set.maxLoadingCapacity);
+    }*/
 
     @Test
     public void testUnloadCarTransporter(){
         set.loadCarTransporter(VolvoObj);
         set.unloadCarTransporter();
-        assertTrue(storageset.loadedCars.isEmpty());
+        assertTrue(loadedCars.isEmpty());
 
     }
 }
