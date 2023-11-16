@@ -70,8 +70,6 @@ public class CarTransporter extends Vehicle{
 
     }
 
-    public void getLoadingCapacity(){return maxLoadingCapacity}
-
     @Override
     public void move() {
         double xPosition = getPosition().getX();
