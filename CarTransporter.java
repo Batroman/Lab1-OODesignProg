@@ -70,7 +70,9 @@ public class CarTransporter extends Vehicle{
 
     }
 
-    public void getLoadingCapacity(){return maxLoadingCapacity}
+    public int getLoadingCapacity(){
+        return maxLoadingCapacity;
+    }
 
     @Override
     public void move() {
