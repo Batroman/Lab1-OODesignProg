@@ -1,13 +1,11 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 public class CarTransporter extends Vehicle{
     private Truckbed truckbedParent;
     private Storage storageParent;
 
-    public int maxLoadingCapacity = 6;
-    protected ArrayList<String> loadedCars = new ArrayList<>(maxLoadingCapacity);
+    public final int maxLoadingCapacity = 6;
 
     public CarTransporter(int nrDoors,
                           double enginePower,
@@ -19,7 +17,7 @@ public class CarTransporter extends Vehicle{
 
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         this.truckbedParent = new Truckbed();
-        this.storageParent = new Storage();
+        this.storageParent = new Storage(maxLoadingCapacity);
     }
     public double getTruckbedAngle() {
         return truckbedParent.getTruckbedAngle();
@@ -51,9 +49,10 @@ public class CarTransporter extends Vehicle{
     }
 
     protected void loadCarTransporter(Vehicle other) {
-        if (checkDistance(other) && getTruckbedAngle() == 0 && loadedCars.size() < maxLoadingCapacity) {
-            storageParent.loadCarTransporter(other);
-            other.setPosition(getXPosition(), getYPosition()); //set loaded car's pos to same as transporter
+        if (checkDistance(other) && getTruckbedAngle() == 0 && storageParent.loadedCars.size() < maxLoadingCapacity) {
+            storageParent.loadStorage(other, maxLoadingCapacity);
+            //set loaded car's pos to same as transporter:
+            other.setPosition(getXPosition(), getYPosition());
         }
     }
 
@@ -61,15 +60,17 @@ public class CarTransporter extends Vehicle{
         if(getTruckbedAngle() == 0 && getCurrentSpeed() == 0){
 
             //car to be unloaded
-            Vehicle unloadedCar = storageParent.loadedCars.get(storageParent.loadedCars.size()-1);
+            Vehicle unloadedCar = (Vehicle) storageParent.loadedCars.get(storageParent.loadedCars.size()-1);
 
-            storageParent.unloadCarTransporter();
+            storageParent.unloadStorage();
 
-            // set new position for unloaded car
+            // set new position for unloaded car:
             unloadedCar.setPosition(getXPosition()-1, getYPosition()-1);
         }
 
     }
+
+    public void getLoadingCapacity(){return maxLoadingCapacity}
 
     @Override
     public void move() {
@@ -90,13 +91,12 @@ public class CarTransporter extends Vehicle{
                 break;
         }
         setPosition(xPosition, yPosition);
+        // update position for all loaded cars:
         moveLoadedCars();
     }
 
     private void moveLoadedCars() {
-        for (Vehicle vehicle : storageParent.loadedCars) {
-            vehicle.setPosition(getXPosition(), getYPosition());
-        }
+
     }
 
 
