@@ -3,7 +3,6 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -50,23 +49,34 @@ public class TestCarTransporter {
     @Test
     public void testLoadCarTransporter() {
         set.loadCarTransporter(VolvoObj);
-        assertTrue(loadedCars.getFirst() == VolvoObj);
+        assertTrue(loadedCars.contains(VolvoObj));
+    }
+    @Test
+    public void testLoadCarTransporterWithNotLoadableCar(){
+        set.loadCarTransporter(SaabObj);
+        assertTrue(loadedCars.isEmpty());
     }
 
-/*    @Test
+    @Test
     public void testLoadCarTransporterMaxLoad() {
-       for (int i = 0; i < set.maxLoadingCapacity + 3; i++) {
+       for (int i = 0; i < loadedCars.size() + 1; i++) {
             set.loadCarTransporter(VolvoObj);
         }
-        assertTrue(loadedCars.size() >= set.maxLoadingCapacity);
-    }*/
-
+        assertTrue(loadedCars.size() == 6);
+    }
     @Test
     public void testUnloadCarTransporter(){
         set.loadCarTransporter(VolvoObj);
         set.unloadCarTransporter();
         assertTrue(loadedCars.isEmpty());
+    }
 
+    @Test
+    public void testMovesTheLoadedCars(){
+        set.loadCarTransporter(VolvoObj);
+        set.currentSpeed = 2;
+        set.move();
+        assertSame(VolvoObj.getPosition(), set.getPosition());
     }
 }
 

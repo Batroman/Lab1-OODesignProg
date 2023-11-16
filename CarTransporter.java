@@ -5,7 +5,7 @@ public class CarTransporter extends Vehicle{
     private Truckbed truckbedParent;
     private Storage<Vehicle> storageParent;
 
-    public final int maxLoadingCapacity = 6;
+    private final int maxLoadingCapacity = 6;
 
     public CarTransporter(int nrDoors,
                           double enginePower,
@@ -19,7 +19,7 @@ public class CarTransporter extends Vehicle{
         this.truckbedParent = new Truckbed();
         this.storageParent = new Storage<>(maxLoadingCapacity);
     }
-    public double getTruckbedAngle() {
+    protected double getTruckbedAngle() {
         return truckbedParent.getTruckbedAngle();
     }
 
@@ -46,12 +46,13 @@ public class CarTransporter extends Vehicle{
             return true;
         }
         else {return false;}
+
+        //Do we need to test this.
     }
 
     protected void loadCarTransporter(Vehicle car) {
         if (checkDistance(car) && getTruckbedAngle() == 0 && !(car instanceof CarTransporter)) {
             storageParent.loadStorage(car);
-            //set loaded car's pos to same as transporter:
             car.setPosition(getXPosition(), getYPosition());
         }
     }
@@ -76,47 +77,6 @@ public class CarTransporter extends Vehicle{
         for(Vehicle contents: storageParent.getContents()){
             contents.setPosition(transportXPos,transportYPos);
             contents.setDirection(transportDir);
-        }   }
-
-/*
-    public int getLoadingCapacity(){
-        return maxLoadingCapacity;
-    }
-*/
-
-/*
-    @Override
-    public void move() {
-        double xPosition = getPosition().getX();
-        double yPosition = getPosition().getY();
-        switch (getDirection()) {
-            case 0:
-                yPosition += getCurrentSpeed();
-                break;
-            case 180:
-                yPosition -= getCurrentSpeed();
-                break;
-            case 90:
-                xPosition += getCurrentSpeed();
-                break;
-            case 270:
-                xPosition -= getCurrentSpeed();
-                break;
         }
-        setPosition(xPosition, yPosition);
-        // update position for all loaded cars:
-        moveLoadedCars();
     }
-*/
-
-
-
-/*    private void moveLoadedCars() {
-        for () {
-            Vehicle thisVehicle = (Vehicle) storageParent.loadedCars.get(i);
-            thisVehicle.setPosition(getXPosition(), getYPosition());
-        }
-    }*/
-
-
 }

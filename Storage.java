@@ -14,7 +14,9 @@ public class Storage<T extends Vehicle> {
     }
 
     protected void unloadStorage(){
-            storageContents.removeLast();
+       // T last = storageContents.getLast();
+       // storageContents.remove(last);
+        storageContents.removeLast();
     }
 
     protected ArrayList<T> getContents(){
