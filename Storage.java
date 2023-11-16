@@ -17,9 +17,4 @@ public class Storage {
             loadedCars.remove(loadedCars.size()-1);
     }
 
-    protected void moveLoadedCar(){
-
-    }
-
-
 }

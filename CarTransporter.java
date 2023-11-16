@@ -96,7 +96,10 @@ public class CarTransporter extends Vehicle{
     }
 
     private void moveLoadedCars() {
-
+        for (int i = 0; i < storageParent.loadedCars.size(); i++) {
+            Vehicle thisVehicle = (Vehicle) storageParent.loadedCars.get(i);
+            thisVehicle.setPosition(getXPosition(), getYPosition());
+        }
     }
 
 
