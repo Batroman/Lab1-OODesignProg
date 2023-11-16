@@ -8,7 +8,7 @@ public class TestScania {
     private Scania set;
 
     @Before
-    public void innit(){
+    public void init(){
         set = new Scania(2, 250, Color.green, "ScaniaTruck", 0, 0, 0);
         set.currentSpeed = 0;
 

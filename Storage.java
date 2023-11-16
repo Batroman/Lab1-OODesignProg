@@ -5,6 +5,7 @@ public class Storage {
     public ArrayList loadedCars;
 
     public Storage(int maxLoadingCapacity) {
+       // this.loadedCars = loadedCars;
         ArrayList<Vehicle> loadedCars = new ArrayList<>(maxLoadingCapacity);
     }
 

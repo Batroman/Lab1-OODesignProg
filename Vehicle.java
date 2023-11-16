@@ -7,7 +7,7 @@ public class Vehicle implements Movable {
 
     protected double currentSpeed;
     private Color color;
-    protected final String modelName;
+    private final String modelName;
     private int direction;
     private double xPos;
     private double yPos;
