@@ -10,7 +10,7 @@ public class TestSaab {
     private Saab95 set;
     @Before
     public void init(){
-        set = new Saab95(2, 125, Color.red, "Saab95", 0, 5,5);
+        set = new Saab95(2, 125, Color.red, "Saab95", "N", 5,5);
         set.currentSpeed = 1;
     }
 

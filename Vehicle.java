@@ -8,10 +8,14 @@ public class Vehicle implements Movable {
     protected double currentSpeed;
     private Color color;
     private final String modelName;
-    private int direction;
+    private String direction;
+
     private Point2D.Double position;
 
-    public Vehicle (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+    private enum Directions {N, E, S, W};
+    // TODO: Incorporate enum
+
+    public Vehicle (int nrDoors, double enginePower, Color color, String modelName, String direction, double xPos, double yPos) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -71,6 +75,7 @@ public class Vehicle implements Movable {
             decrementSpeed(amount);
         }
     }
+
     protected void setPosition(double x, double y) {
         position.setLocation(x,y);
     }
@@ -86,26 +91,28 @@ public class Vehicle implements Movable {
     public double getYPosition() {
         return position.getY();
     }
-    protected void setDirection(int angle) {
-        direction = angle;
+    protected void setDirection(String dir) {
+        direction = dir;
     }
-    public int getDirection() {
+
+    public String getDirection() {
         return direction;
     }
-    public void move() {
+
+    public void move(){
         double xPosition = getXPosition();
         double yPosition = getYPosition();
-        switch (getDirection()) {
-            case 0:
+        switch (getDirection()){
+            case "N":
                 yPosition += getCurrentSpeed();
                 break;
-            case 180:
-                yPosition -= getCurrentSpeed();
-                break;
-            case 90:
+            case "E":
                 xPosition += getCurrentSpeed();
                 break;
-            case 270:
+            case "S":
+                yPosition -= getCurrentSpeed();
+                break;
+            case "W":
                 xPosition -= getCurrentSpeed();
                 break;
         }
@@ -113,10 +120,37 @@ public class Vehicle implements Movable {
     }
 
     public void turnLeft() {
-        direction = (getDirection() + 270) % 360;
+        //int dirIndex = Directions.valueOf(getDirection()).ordinal();
+        switch (getDirection()){
+            case "N":
+                direction = "W";
+                break;
+            case "W":
+                direction = "S";
+                break;
+            case "S":
+                direction = "E";
+                break;
+            case "E":
+                direction = "N";
+                break;
+        }
     }
 
     public void turnRight() {
-        direction = (getDirection() + 90) % 360;
+        switch (getDirection()){
+            case "N":
+                direction = "E";
+                break;
+            case "E":
+                direction = "S";
+                break;
+            case "S":
+                direction = "W";
+                break;
+            case "W":
+                direction = "N";
+                break;
+        }
     }
 }

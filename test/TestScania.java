@@ -9,7 +9,7 @@ public class TestScania {
 
     @Before
     public void init(){
-        set = new Scania(2, 250, Color.green, "ScaniaTruck", 0, 0, 0);
+        set = new Scania(2, 250, Color.green, "ScaniaTruck", "N", 0, 0);
         set.currentSpeed = 0;
 
     }

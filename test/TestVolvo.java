@@ -10,7 +10,7 @@ public class TestVolvo {
     private Volvo240 set;
     @Before
     public void init() {
-        set = new Volvo240(4,100, Color.black,"Volvo240",0,0,0);
+        set = new Volvo240(4,100, Color.black,"Volvo240","N",0,0);
         set.currentSpeed = 1;
     }
     @Test

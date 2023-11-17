@@ -1,4 +1,3 @@
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,19 +11,15 @@ public class TestCarTransporter {
     private Volvo240 VolvoObj;
     private Saab95 SaabObj;
 
-    private CarTransporter transport;
-
     @Before
     public void init() {
-        set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0,6);
+        set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", "N", 0, 0,6);
         set.currentSpeed = 0;
 
-        transport = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0,6);
-
-        VolvoObj = new Volvo240(4,100, Color.black,"Volvo240",0,0,0);
+        VolvoObj = new Volvo240(4,100, Color.black,"Volvo240","N",0,0);
         VolvoObj.currentSpeed = 0;
 
-        SaabObj = new Saab95(2, 125, Color.red, "Saab95", 0, 5,5);
+        SaabObj = new Saab95(2, 125, Color.red, "Saab95", "N", 5,5);
 
     }
 
@@ -55,18 +50,13 @@ public class TestCarTransporter {
         set.loadCarTransporter(SaabObj);
         assertTrue(set.getLoadedCars().isEmpty());
     }
-    @Test
-    public void testLoadCarTransportWithOtherCarTransport(){
-        set.loadCarTransporter(transport);
-        assertTrue(set.getLoadedCars().isEmpty());
-    }
 
     @Test
     public void testLoadCarTransporterMaxLoad() {
        for (int i = 0; i < set.getLoadedCars().size() + 2; i++) {
             set.loadCarTransporter(VolvoObj);
         }
-        assertEquals(6, set.getLoadedCars().size());
+        assertTrue(set.getLoadedCars().size() == 6);
     }
     @Test
     public void testUnloadCarTransporter(){

@@ -6,7 +6,7 @@ public class Scania extends Vehicle{
                   double enginePower,
                   Color color,
                   String modelName,
-                  int direction,
+                  String direction,
                   double xPos,
                   double yPos) {
 

@@ -10,7 +10,7 @@ public class CarTransporter extends Vehicle{
                           double enginePower,
                           Color color,
                           String modelName,
-                          int direction,
+                          String direction,
                           double xPos,
                           double yPos,
                           int maxLoadingCapacity){
@@ -67,7 +67,7 @@ public class CarTransporter extends Vehicle{
         super.move();
         double transportXPos = getXPosition();
         double transportYPos = getYPosition();
-        int transportDir = getDirection();
+        String transportDir = getDirection();
         for(Vehicle contents: storageParent.getContents()){
             contents.setPosition(transportXPos,transportYPos);
             contents.setDirection(transportDir);

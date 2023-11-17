@@ -1,8 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.awt.*;
+import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -12,8 +12,7 @@ public class TestVehicle {
 
     @Before
     public void init() {
-        set = new Vehicle(4,100, Color.blue,"MyCar",0,0,0);
-        set.setDirection(0);
+        set = new Vehicle(4,100, Color.blue,"MyCar","N",0,0);
         set.currentSpeed = 1;
     }
 
@@ -64,6 +63,7 @@ public class TestVehicle {
     @Test
     public void testBrakeOutOfRange(){
         set.brake(1.2);
+        // currentSpeed should not change if the amount sent to gas is out of range
         assertEquals(1, set.getCurrentSpeed(), 0.0);
     }
     @Test
@@ -74,6 +74,7 @@ public class TestVehicle {
     @Test
     public void testGasOutOfRange(){
         set.gas(1.2);
+        // currentSpeed should not change if the amount sent to gas is out of range
         assertEquals(1, set.getCurrentSpeed(), 0.0);
     }
 
@@ -84,26 +85,26 @@ public class TestVehicle {
     }
     @Test
     public void testMoveUp() {
-        set.setDirection(0);
+        set.setDirection("N");
         set.move();
         assertTrue(set.getPosition().getY() == set.getCurrentSpeed() && set.getPosition().getX() == 0);
     }
 
     @Test
     public void testMoveDown() {
-        set.setDirection(180);
+        set.setDirection("S");
         set.move();
         assertTrue(set.getPosition().getY() == -set.getCurrentSpeed() && set.getPosition().getX() == 0);
     }
     @Test
     public void testMoveRight() {
-        set.setDirection(90);
+        set.setDirection("E");
         set.move();
         assertTrue(set.getPosition().getX() == set.getCurrentSpeed() && set.getPosition().getY() == 0);
     }
     @Test
     public void testMoveLeft() {
-        set.setDirection(270);
+        set.setDirection("W");
         set.move();
         assertTrue(set.getPosition().getX() == -set.getCurrentSpeed() && set.getPosition().getY() == 0);
     }
@@ -111,56 +112,56 @@ public class TestVehicle {
     @Test
     public void testTurnRightFrom0() {
         set.turnRight();
-        assertEquals(90, set.getDirection());
+        assertEquals("E", set.getDirection());
     }
 
     @Test
     public void testTurnRightFrom90() {
-        set.setDirection(90);
+        set.setDirection("E");
         set.turnRight();
-        assertEquals(180, set.getDirection());
+        assertEquals("S", set.getDirection());
     }
 
     @Test
     public void testTurnRightFrom180() {
-        set.setDirection(180);
+        set.setDirection("S");
         set.turnRight();
-        assertEquals(270, set.getDirection());
+        assertEquals("W", set.getDirection());
     }
 
     @Test
     public void testTurnRightFrom270() {
-        set.setDirection(270);
+        set.setDirection("W");
         set.turnRight();
-        assertEquals(0, set.getDirection());
+        assertEquals("N", set.getDirection());
     }
 
     @Test
     public void testTurnLeftFrom0() {
-        set.setDirection(0);
+        set.setDirection("N");
         set.turnLeft();
-        assertEquals(270, set.getDirection());
+        assertEquals("W", set.getDirection());
     }
 
     @Test
     public void testTurnLeftFrom90() {
-        set.setDirection(90);
+        set.setDirection("E");
         set.turnLeft();
-        assertEquals(0, set.getDirection());
+        assertEquals("N", set.getDirection());
     }
 
     @Test
     public void testTurnLeftFrom180() {
-        set.setDirection(180);
+        set.setDirection("S");
         set.turnLeft();
-        assertEquals(90, set.getDirection());
+        assertEquals("E", set.getDirection());
     }
 
     @Test
     public void testTurnLeftFrom270() {
-        set.setDirection(270);
+        set.setDirection("W");
         set.turnLeft();
-        assertEquals(180, set.getDirection());
+        assertEquals("S", set.getDirection());
     }
 
 }

@@ -1,11 +1,10 @@
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 public class Volvo240 extends Vehicle {
 
     private final static double trimFactor = 1.25;
 
-    public Volvo240(int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
+    public Volvo240(int nrDoors, double enginePower, Color color, String modelName, String direction, double xPos, double yPos) {
 
         super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
         setPosition(xPos,yPos);
