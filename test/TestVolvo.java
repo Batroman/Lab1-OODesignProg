@@ -21,13 +21,13 @@ public class TestVolvo {
     @Test
     public void testIncrementSpeed(){
         set.incrementSpeed(0.5);
-        assertTrue(set.getCurrentSpeed() == 1.625);
+        assertEquals(1.625, set.getCurrentSpeed(), 0.0);
 
     }
 
     @Test
     public void testDecrementSpeed(){
-        set.decrementSpeed(.5);
-        assertTrue(set.getCurrentSpeed() == 0.375);
+        set.decrementSpeed(0.5);
+        assertEquals(0.375, set.getCurrentSpeed(), 0.0);
     }
 }

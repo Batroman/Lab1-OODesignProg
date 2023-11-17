@@ -9,8 +9,6 @@ public class Vehicle implements Movable {
     private Color color;
     private final String modelName;
     private int direction;
-    private double xPos;
-    private double yPos;
     private Point2D.Double position;
 
     public Vehicle (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
@@ -19,8 +17,6 @@ public class Vehicle implements Movable {
         this.color = color;
         this.modelName = modelName;
         this.direction = direction;
-        this.xPos = xPos;
-        this.yPos = yPos;
         this.position = new Point2D.Double(xPos, yPos);
     }
     public int getNrDoors() {

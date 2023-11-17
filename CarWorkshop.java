@@ -11,7 +11,7 @@ public class CarWorkshop<T extends Vehicle> {
     protected void loadWorkshop(T car) {
         parent.loadStorage(car);
     }
-    protected void unloadWorkshop(T car){
+    protected void unloadWorkshop(){
         parent.unloadStorage();
     }
 }

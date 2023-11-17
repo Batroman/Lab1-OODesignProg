@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +35,7 @@ public class TestCarWorkshop {
     @Test
     public void testUnloadVolvoWorkshop(){
         set.loadWorkshop(volvo);
-        set.unloadWorkshop(volvo);
+        set.unloadWorkshop();
         assertTrue(set.getLoadedCars().isEmpty());
     }
     @Test

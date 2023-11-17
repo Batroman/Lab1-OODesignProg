@@ -1,4 +1,4 @@
-import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -66,7 +66,7 @@ public class TestCarTransporter {
        for (int i = 0; i < set.getLoadedCars().size() + 2; i++) {
             set.loadCarTransporter(VolvoObj);
         }
-        assertTrue(set.getLoadedCars().size() == 6);
+        assertEquals(6, set.getLoadedCars().size());
     }
     @Test
     public void testUnloadCarTransporter(){
