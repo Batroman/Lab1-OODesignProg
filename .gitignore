@@ -2,3 +2,14 @@
 *.class
 *.class
 out/production/Lab1-OODesignProg/Main.class
+out/production/Lab1-OODesignProg/CarTransporter.class
+out/production/Lab1-OODesignProg/CarTransporter.class
+out/production/Lab1-OODesignProg/Saab95.class
+out/production/Lab1-OODesignProg/Scania.class
+out/production/Lab1-OODesignProg/Vehicle.class
+out/production/Lab1-OODesignProg/Volvo240.class
+*.class
+out/test/Lab1-OODesignProg/TestSaab.class
+out/test/Lab1-OODesignProg/TestScania.class
+out/test/Lab1-OODesignProg/TestVehicle.class
+out/test/Lab1-OODesignProg/TestVolvo.class
