@@ -1,5 +1,7 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 
 import java.awt.*;
 
@@ -109,17 +111,6 @@ public class TestVehicle {
         assertTrue(set.getPosition().getX() == -set.getCurrentSpeed() && set.getPosition().getY() == 0);
     }
 
-   /* @Test
-    public void testMoveAngularX() {
-        set.move(Math.PI / 3);
-        assertEquals(set.getXPosition(), 1/2, 0.1 );
-    }
-
-    @Test
-    public void testMoveAngularY() {
-        set.move(Math.PI / 3);
-        assertEquals(set.getYPosition(),Math.sqrt(3)/2, 0.2 );
-    }*/
     @Test
     public void testTurnRightFrom0() {
         set.turnRight();

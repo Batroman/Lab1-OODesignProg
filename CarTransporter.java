@@ -19,11 +19,11 @@ public class CarTransporter extends Vehicle{
         this.truckbedParent = new Truckbed();
         this.storageParent = new Storage<>(maxLoadingCapacity);
     }
-    protected int getTruckbedAngle() {
+    public int getTruckbedAngle() {
         return truckbedParent.getTruckbedAngle();
     }
 
-    protected ArrayList getLoadedCars(){return storageParent.getContents();}
+    protected ArrayList<Vehicle> getLoadedCars(){return storageParent.getContents();}
     public void reduceTruckbedAngle() {
         if (getCurrentSpeed() == 0) {
             truckbedParent.reduceTruckbedAngle(70);

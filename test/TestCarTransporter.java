@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,10 +12,14 @@ public class TestCarTransporter {
     private Volvo240 VolvoObj;
     private Saab95 SaabObj;
 
+    private CarTransporter transport;
+
     @Before
     public void init() {
         set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0,6);
         set.currentSpeed = 0;
+
+        transport = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0,6);
 
         VolvoObj = new Volvo240(4,100, Color.black,"Volvo240",0,0,0);
         VolvoObj.currentSpeed = 0;
@@ -48,6 +53,11 @@ public class TestCarTransporter {
     @Test
     public void testLoadCarTransporterWithNotLoadableCar(){
         set.loadCarTransporter(SaabObj);
+        assertTrue(set.getLoadedCars().isEmpty());
+    }
+    @Test
+    public void testLoadCarTransportWithOtherCarTransport(){
+        set.loadCarTransporter(transport);
         assertTrue(set.getLoadedCars().isEmpty());
     }
 

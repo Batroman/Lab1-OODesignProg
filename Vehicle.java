@@ -75,7 +75,6 @@ public class Vehicle implements Movable {
             decrementSpeed(amount);
         }
     }
-
     protected void setPosition(double x, double y) {
         position.setLocation(x,y);
     }
