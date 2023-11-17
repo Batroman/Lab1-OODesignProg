@@ -1,18 +1,17 @@
+import java.util.ArrayList;
+
 public class CarWorkshop<T extends Vehicle> {
     private Storage<T> parent;
-    private T typeOfVehicle;
-
-    private final int maxLoadingCapacity = 20;
-    public CarWorkshop(T typeOfVehicle, int maxLoadingCapacity){
-        this.typeOfVehicle = typeOfVehicle;
+    public CarWorkshop(int maxLoadingCapacity){
         this.parent = new Storage<>(maxLoadingCapacity);
-        // CarWorkshop<T> NyVerkstad = new CarWorkshop<>();
     }
-    protected void loadWorkshop(T typeOfVehicle) {
-        parent.loadStorage(typeOfVehicle);
+    protected ArrayList getLoadedCars(){
+        return parent.getContents();
     }
-
-    protected void unloadWorkshop(T typeOfVehicle){
+    protected void loadWorkshop(T car) {
+        parent.loadStorage(car);
+    }
+    protected void unloadWorkshop(T car){
         parent.unloadStorage();
     }
 }

@@ -9,14 +9,16 @@ public class Storage<T extends Vehicle> {
     }
 
     protected void loadStorage(T car) {
-        if (storageContents.size() < maxLoad) {}
+        if (storageContents.size() < maxLoad) {
             storageContents.add(car);
+        }
     }
 
     protected void unloadStorage(){
-       // T last = storageContents.getLast();
-       // storageContents.remove(last);
+        T unload = storageContents.getLast();
+        unload.setPosition(unload.getXPosition() -1, unload.getYPosition()-1);
         storageContents.removeLast();
+        System.out.println(unload.getModelName() + " has been unloaded");
     }
 
     protected ArrayList<T> getContents(){

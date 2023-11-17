@@ -14,7 +14,7 @@ public class Scania extends Vehicle{
         stopEngine();
         this.parent = new Truckbed();
     }
-    public double getTruckbedAngle() {
+    public int getTruckbedAngle() {
         return parent.getTruckbedAngle();
     }
     public void reduceTruckbedAngle(int angle) {

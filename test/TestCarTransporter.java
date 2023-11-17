@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -12,12 +11,9 @@ public class TestCarTransporter {
     private Volvo240 VolvoObj;
     private Saab95 SaabObj;
 
-    private ArrayList loadedCars;
-    private Storage storageset;
-
     @Before
     public void init() {
-        set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0);
+        set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", 0, 0, 0,6);
         set.currentSpeed = 0;
 
         VolvoObj = new Volvo240(4,100, Color.black,"Volvo240",0,0,0);
@@ -25,8 +21,6 @@ public class TestCarTransporter {
 
         SaabObj = new Saab95(2, 125, Color.red, "Saab95", 0, 5,5);
 
-        storageset = new Storage<>(6);
-        loadedCars = storageset.getContents();
     }
 
     @Test
@@ -49,26 +43,32 @@ public class TestCarTransporter {
     @Test
     public void testLoadCarTransporter() {
         set.loadCarTransporter(VolvoObj);
-        assertTrue(loadedCars.contains(VolvoObj));
+        assertTrue(set.getLoadedCars().contains(VolvoObj));
     }
     @Test
     public void testLoadCarTransporterWithNotLoadableCar(){
         set.loadCarTransporter(SaabObj);
-        assertTrue(loadedCars.isEmpty());
+        assertTrue(set.getLoadedCars().isEmpty());
     }
 
     @Test
     public void testLoadCarTransporterMaxLoad() {
-       for (int i = 0; i < loadedCars.size() + 1; i++) {
+       for (int i = 0; i < set.getLoadedCars().size() + 2; i++) {
             set.loadCarTransporter(VolvoObj);
         }
-        assertTrue(loadedCars.size() == 6);
+        assertTrue(set.getLoadedCars().size() == 6);
     }
     @Test
     public void testUnloadCarTransporter(){
         set.loadCarTransporter(VolvoObj);
         set.unloadCarTransporter();
-        assertTrue(loadedCars.isEmpty());
+        assertTrue(set.getLoadedCars().isEmpty());
+    }
+    @Test
+    public void testUnloadedCarNewPos(){
+        set.loadCarTransporter(VolvoObj);
+        set.unloadCarTransporter();
+        assertTrue(VolvoObj.getXPosition() == -1.0 && VolvoObj.getYPosition() == -1.0);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class TestCarTransporter {
         set.loadCarTransporter(VolvoObj);
         set.currentSpeed = 2;
         set.move();
-        assertSame(VolvoObj.getPosition(), set.getPosition());
+        assertEquals(VolvoObj.getPosition(), set.getPosition());
     }
 }
 
