@@ -1,6 +1,6 @@
 public class Truckbed {
     private int currentTruckbedAngle;
-    protected int getTruckbedAngle() {
+    public int getTruckbedAngle() {
         return currentTruckbedAngle;
     }
     public void reduceTruckbedAngle(int angle) {

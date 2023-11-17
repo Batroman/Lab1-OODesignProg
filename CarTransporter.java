@@ -40,7 +40,7 @@ public class CarTransporter extends Vehicle{
             currentSpeed = 0.1;
         }
     }
-    public boolean checkDistance(Vehicle other) {
+    protected boolean checkDistance(Vehicle other) {
         double distance = Point2D.distance(getXPosition(), getYPosition(),
                 other.getXPosition(), other.getYPosition());
         if (distance <= 2) {

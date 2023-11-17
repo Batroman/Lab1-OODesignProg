@@ -11,7 +11,7 @@ public class Vehicle implements Movable {
     private int direction;
     private double xPos;
     private double yPos;
-    private Point2D.Double position; // The position of the car
+    private Point2D.Double position;
 
     public Vehicle (int nrDoors, double enginePower, Color color, String modelName, int direction, double xPos, double yPos) {
         this.nrDoors = nrDoors;
