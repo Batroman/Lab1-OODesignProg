@@ -15,7 +15,10 @@ public class Volvo240 extends Vehicle {
     }
     @Override
     protected void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        if (getCurrentSpeed() != 0) {
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        }
+
     }
     @Override
     protected void decrementSpeed(double amount) {
