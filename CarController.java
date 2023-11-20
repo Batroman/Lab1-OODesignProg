@@ -39,10 +39,6 @@ public class CarController {
         // Start the timer
         cc.timer.start();
     }
-
-    public ArrayList<Vehicle> getCars() {
-        return cars;
-    }
     
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
