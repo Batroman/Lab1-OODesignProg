@@ -98,5 +98,21 @@ public class CarController {
         }
     }
 
+    void liftBed(){
+        for (Vehicle car: cars){
+            if (car instanceof Scania)
+                ((Scania) car).increaseTruckbedAngle(10);
+
+        }
+    }
+
+    void lowerBed(){
+        for (Vehicle car: cars){
+            if (car instanceof Scania){
+                ((Scania) car).reduceTruckbedAngle(10);
+            }
+        }
+    }
+
 
 }
