@@ -70,4 +70,33 @@ public class CarController {
             car.brake(brake);
         }
     }
+
+    void startAllCars(){
+        for (Vehicle car : cars){
+            car.startEngine();
+        }
+    }
+
+    void stopAllCars(){
+        for (Vehicle car : cars){
+            car.stopEngine();
+        }
+    }
+
+
+    void turboOn(){
+        for (Vehicle car: cars){
+            if (car instanceof Saab95)
+                ((Saab95) car).setTurboOn();
+        }
+    }
+
+    void turboOff(){
+        for (Vehicle car: cars){
+            if (car instanceof Saab95)
+                ((Saab95) car).setTurboOff();
+        }
+    }
+
+
 }
