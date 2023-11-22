@@ -12,10 +12,13 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage carImage;
+    BufferedImage saabImage;
+    BufferedImage scaniaImage;
+
     // To keep track of a single cars position
     Point carPoint = new Point();
 
-    ArrayList<Vehicle> cars;
+    ArrayList<Vehicle> drawableCars = new ArrayList<>();
 
     // TODO: Make this general for all cars
     void moveit(int x, int y){
@@ -28,7 +31,6 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        this.cars = cars;
 
         // Print an error message in case file is not found with a try/catch block
         try {
@@ -39,11 +41,15 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
 
-            //for (Vehicle car: cars){
-              //  String vehicleName = car.getModelName();
-              //  String picName = "pics/" + vehicleName + ".jpg";
-            carImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-         //   }
+            for (Vehicle car: cars){
+                String vehicleName = car.getModelName();
+                String picName = "pics/" + vehicleName + ".jpg";
+                carImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+                saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+                scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+
+                drawableCars.add(car);
+            }
 
         } catch (IOException ex)
         {
@@ -57,6 +63,19 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(carImage, carPoint.x, carPoint.y, null); // see javadoc for more info on the parameters
+        for (Vehicle car: drawableCars){
+            switch (car.getModelName()){
+                case "Volvo240":
+                    g.drawImage(carImage, (int) Math.round(car.getXPosition()), (int) Math.round(car.getYPosition()), null);
+                    break;
+                case "Saab95":
+                    g.drawImage(saabImage, (int) Math.round(car.getXPosition()), (int) Math.round(car.getYPosition()), null);
+                    break;
+                case "Scania":
+                    g.drawImage(scaniaImage, (int) Math.round(car.getXPosition()), (int) Math.round(car.getYPosition()), null);
+                    break;
+            }
+         // see javadoc for more info on the parameters
+        }
     }
 }
