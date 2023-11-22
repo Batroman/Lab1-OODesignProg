@@ -33,6 +33,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        // draw image associated with each car
         for (Vehicle car : imageMap.keySet()) {
             g.drawImage(imageMap.get(car), (int) Math.round(car.getXPosition()), (int) Math.round(car.getYPosition()), null);
         }
