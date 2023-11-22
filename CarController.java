@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
+* Its responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
 
@@ -21,7 +21,7 @@ public class CarController {
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
-    // A list of cars, modify if needed
+    // A list of cars
     ArrayList<Vehicle> cars = new ArrayList<>();
 
     //methods:
@@ -41,9 +41,7 @@ public class CarController {
         cc.timer.start();
     }
     
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /* Each step the TimerListener moves all the cars in the list and tells the view to update its images.*/
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) {
@@ -52,9 +50,6 @@ public class CarController {
                     car.turnLeft();
                 }
                 car.move();
-                int x = (int) Math.round(car.getXPosition());
-                int y = (int) Math.round(car.getYPosition());
-                frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -119,8 +114,4 @@ public class CarController {
         }
     }
 
-    void hitWall(){
-        for (Vehicle car: cars){
-        }
-    }
 }
