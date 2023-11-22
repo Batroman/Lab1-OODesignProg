@@ -18,10 +18,8 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
-
+    CarController carC = new CarController();
     DrawPanel drawPanel = new DrawPanel(X, Y-240, carC.cars);
-
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();

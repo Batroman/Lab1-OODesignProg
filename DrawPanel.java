@@ -12,12 +12,12 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage carImage;
-    // To keep track of a singel cars position
+    // To keep track of a single cars position
     Point carPoint = new Point();
 
     ArrayList<Vehicle> cars;
 
-    // TODO: Make this genereal for all cars
+    // TODO: Make this general for all cars
     void moveit(int x, int y){
         carPoint.x = x;
         carPoint.y = y;
@@ -39,11 +39,11 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
 
-            for (Vehicle car: cars){
-                String vehicleName = car.toString();
-                String picName = "pics/" + vehicleName + ".jpg";
-                carImage = ImageIO.read(DrawPanel.class.getResourceAsStream(picName);
-            }
+            //for (Vehicle car: cars){
+              //  String vehicleName = car.getModelName();
+              //  String picName = "pics/" + vehicleName + ".jpg";
+            carImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+         //   }
 
         } catch (IOException ex)
         {
