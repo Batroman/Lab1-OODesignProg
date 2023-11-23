@@ -50,6 +50,7 @@ public class CarController {
                 if(car.getXPosition() <= 0 || car.getXPosition() >= 800-110){
                     car.turnLeft();
                     car.turnLeft();
+
                 }
                 car.move();
                 int x = (int) Math.round(car.getXPosition());
@@ -119,8 +120,4 @@ public class CarController {
         }
     }
 
-    void hitWall(){
-        for (Vehicle car: cars){
-        }
-    }
 }
