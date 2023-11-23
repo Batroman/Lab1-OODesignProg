@@ -45,15 +45,18 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) {
-                if(car.getXPosition() <= 0 || car.getXPosition() >= 800-110){
-                    car.turnLeft();
-                    car.turnLeft();
-
-                }
+                reverseCarAtWindowEdge(car);
                 car.move();
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
+        }
+    }
+
+    protected static void reverseCarAtWindowEdge(Vehicle car) {
+        if(car.getXPosition() <= 0 || car.getXPosition() >= 800-110){
+            car.turnLeft();
+            car.turnLeft();
         }
     }
 
