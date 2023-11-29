@@ -37,6 +37,13 @@ public class CarController {
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
+   /*     cc.frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               cc.gas(cc.frame.gasAmount);
+            }
+        });*/
+
         // Start the timer
         cc.timer.start();
     }
