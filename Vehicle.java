@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 public class Vehicle implements Movable {
     private final int nrDoors;

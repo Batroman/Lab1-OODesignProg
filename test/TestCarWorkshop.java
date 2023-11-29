@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class TestCarWorkshop {
 
     private CarWorkshop<Volvo240> set;
-    private CarWorkshop<Vehicle> genericworkshop;
+    private CarWorkshop<Cars> genericworkshop;
     private Volvo240 volvo;
     private Saab95 saab;
     @Before

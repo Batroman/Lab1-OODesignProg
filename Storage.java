@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Storage<T extends Vehicle> {
+public class Storage<T extends Cars> {
     private final int maxLoad;
     private ArrayList<T> storageContents;
     public Storage(int maxLoadingCapacity) {

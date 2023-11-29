@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CarWorkshop<T extends Vehicle> {
+public class CarWorkshop<T extends Cars> {
     private Storage<T> parent;
     public CarWorkshop(int maxLoadingCapacity){
         this.parent = new Storage<>(maxLoadingCapacity);

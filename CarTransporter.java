@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CarTransporter extends Vehicle{
     private Truckbed truckbedParent;
-    private Storage<Vehicle> storageParent;
+    private Storage<Cars> storageParent;
 
     public CarTransporter(int nrDoors,
                           double enginePower,
@@ -23,7 +23,7 @@ public class CarTransporter extends Vehicle{
         return truckbedParent.getTruckbedAngle();
     }
 
-    protected ArrayList<Vehicle> getLoadedCars(){return storageParent.getContents();}
+    protected ArrayList<Cars> getLoadedCars(){return storageParent.getContents();}
     public void reduceTruckbedAngle() {
         if (getCurrentSpeed() == 0) {
             truckbedParent.reduceTruckbedAngle(70);
@@ -40,17 +40,17 @@ public class CarTransporter extends Vehicle{
             currentSpeed = 0.1;
         }
     }
-    protected boolean checkDistance(Vehicle other) {
+    protected boolean checkDistance(Cars car) {
         double distance = Point2D.distance(getXPosition(), getYPosition(),
-                other.getXPosition(), other.getYPosition());
+                car.getXPosition(), car.getYPosition());
         if (distance <= 2) {
             return true;
         }
         else {return false;}
     }
 
-    protected void loadCarTransporter(Vehicle car) {
-        if (checkDistance(car) && !(car instanceof CarTransporter) && (getTruckbedAngle() == 0)) {
+    protected void loadCarTransporter(Cars car) {
+        if (checkDistance(car) && (getTruckbedAngle() == 0)) {
             storageParent.loadStorage(car);
             car.setPosition(getXPosition(), getYPosition());
         }

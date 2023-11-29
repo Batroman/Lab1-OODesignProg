@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Saab95 extends Vehicle{
+public class Saab95 extends Cars{
 
     private boolean turboOn;
 
