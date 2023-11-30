@@ -60,7 +60,9 @@ public class Vehicle implements Movable {
     }
 
     protected void incrementSpeed(double amount) {
-       currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        if(getCurrentSpeed() != 0) {
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        }
     }
     protected void decrementSpeed(double amount) {
        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);

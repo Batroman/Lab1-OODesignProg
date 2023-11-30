@@ -35,7 +35,13 @@ public class Scania extends Vehicle{
             currentSpeed = 0.1;
         }
     }
-}
+
+    @Override
+    protected void incrementSpeed(double amount) {
+        if(getCurrentSpeed() != 0 && getTruckbedAngle() == 0) {
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        }
+}   }
 
 
 
