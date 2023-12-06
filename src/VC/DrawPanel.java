@@ -1,4 +1,6 @@
-package src;
+package src.VC;
+
+import src.Model.Vehicle;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

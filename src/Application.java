@@ -1,5 +1,9 @@
 package src;
 
+import src.Model.Vehicle;
+import src.Model.VehicleFactory;
+import src.VC.CarController;
+
 import java.awt.*;
 import java.util.ArrayList;
 

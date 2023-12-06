@@ -1,4 +1,4 @@
-package src;
+package src.Model;
 
 public class Truckbed {
     private int currentTruckbedAngle;

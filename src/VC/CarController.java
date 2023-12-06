@@ -1,11 +1,17 @@
-package src;
+package src.VC;
+
+import src.Model.Saab95;
+import src.Model.Scania;
+import src.Model.Vehicle;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
-* Its responsibilities is to listen to the View and responds in a appropriate manner by
+* Its responsibilities are to listen to the View and respond in an appropriate manner by
 * modifying the model state and the updating the view.
  */
 
@@ -38,23 +44,51 @@ public class CarController {
         // Start the timer
         this.timer.start();
 
+        // Listeners for CarView
+        this.frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gas(frame.gasAmount);
+            }
+        });
+        this.frame.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { brake(frame.gasAmount);
+            }
+        });
+        this.frame.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {turboOn();
+            }
+        });
+        this.frame.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { turboOff();
+            }
+        });
+        this.frame.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {liftBed();
+            }
+        });
+        this.frame.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {lowerBed();
+            }
+        });
+        this.frame.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {startAllCars();
+            }
+        });
+        this.frame.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {stopAllCars();
+            }
+        });
+
     }
-    //methods:
-
-    public static void main(String[] args) {
-        // Instance of this class
-       /* CarController cc = new CarController();
-
-        cc.cars.add(new Volvo240(4,100, Color.black,"Volvo240","E",1,0));
-        cc.cars.add(new Saab95(2, 125, Color.red, "Saab95", "E", 1,100));
-        cc.cars.add(new Scania(2,250,Color.black,"Scania","E",1,200));*/
-
-        /*// Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();*/
-    }
+    //Methods
 
     protected static void reverseCarAtWindowEdge(Vehicle car) {
         if(car.getXPosition() <= 0 || car.getXPosition() >= 800-110){

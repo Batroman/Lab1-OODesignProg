@@ -1,4 +1,4 @@
-package src;
+package src.Model;
 
 import java.awt.*;
 
@@ -13,11 +13,11 @@ public class Saab95 extends Cars{
         turboOn = false;
     }
 
-    protected void setTurboOn(){
+    public void setTurboOn(){
 	    turboOn = true;
     }
 
-    protected void setTurboOff(){
+    public void setTurboOff(){
 	    turboOn = false;
     }
 

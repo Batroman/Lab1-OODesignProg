@@ -1,6 +1,7 @@
-import src.*;
 import org.junit.Before;
 import org.junit.Test;
+import src.Model.Scania;
+
 import static org.junit.Assert.*;
 import java.awt.*;
 

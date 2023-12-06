@@ -1,4 +1,6 @@
-package src;
+package src.VC;
+
+import src.Model.Vehicle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

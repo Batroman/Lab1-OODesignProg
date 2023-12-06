@@ -1,6 +1,6 @@
-import src.*;
 import org.junit.Before;
 import org.junit.Test;
+import src.Model.Volvo240;
 
 import java.awt.*;
 
