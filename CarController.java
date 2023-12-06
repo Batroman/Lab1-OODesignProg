@@ -26,26 +26,64 @@ public class CarController {
 
     //methods:
 
-    public static void main(String[] args) {
+    public CarController() {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(4,100, Color.black,"Volvo240","E",1,0));
-        cc.cars.add(new Saab95(2, 125, Color.red, "Saab95", "E", 1,100));
-        cc.cars.add(new Scania(2,250,Color.black,"Scania","E",1,200));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
-   /*     cc.frame.gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               cc.gas(cc.frame.gasAmount);
-            }
-        });*/
-
         // Start the timer
         cc.timer.start();
+
+        cc.frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cc.gas(cc.frame.gasAmount);
+            }
+        });
+        cc.frame.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { cc.brake(cc.frame.gasAmount);
+
+            }
+        });
+
+        cc.frame.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {cc.turboOn();
+            }
+        });
+
+        cc.frame.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { cc.turboOff();
+            }
+        });
+
+        cc.frame.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { cc.liftBed();
+            }
+        });
+
+        cc.frame.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { cc.lowerBed();
+            }
+        });
+        cc.frame.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {cc.startAllCars();
+            }
+        });
+        cc.frame.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { cc.stopAllCars();
+            }
+        });
+
     }
     
     /* Each step the TimerListener moves all the cars in the list and tells the view to update its images.*/
@@ -66,6 +104,8 @@ public class CarController {
             car.turnLeft();
         }
     }
+
+
 
     // Calls the gas method for each car once
     void gas(int amount) {
