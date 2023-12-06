@@ -1,8 +1,8 @@
+import src.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
-import java.util.Objects;
 
 import static org.junit.Assert.*;
 

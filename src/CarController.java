@@ -1,7 +1,6 @@
+package src;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /*
@@ -17,40 +16,43 @@ public class CarController {
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+    private Timer timer = new Timer(delay, new TimerListener(this));
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+
     // A list of cars
     ArrayList<Vehicle> cars = new ArrayList<>();
 
+
+    // CarController accepts an arbitrary number of objects of type Vehicle
+    public CarController(Vehicle... list) {
+
+        //Adding each vehicle to the ArrayList 'cars'
+        for (Vehicle vehicle: list) {
+            cars.add(vehicle);
+        }
+
+        this.frame = new CarView("CarSim 1.0", this);
+
+        // Start the timer
+        this.timer.start();
+
+    }
     //methods:
 
     public static void main(String[] args) {
         // Instance of this class
-        CarController cc = new CarController();
+       /* CarController cc = new CarController();
 
         cc.cars.add(new Volvo240(4,100, Color.black,"Volvo240","E",1,0));
         cc.cars.add(new Saab95(2, 125, Color.red, "Saab95", "E", 1,100));
-        cc.cars.add(new Scania(2,250,Color.black,"Scania","E",1,200));
+        cc.cars.add(new Scania(2,250,Color.black,"Scania","E",1,200));*/
 
-        // Start a new view and send a reference of self
+        /*// Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
         // Start the timer
-        cc.timer.start();
-    }
-    
-    /* Each step the TimerListener moves all the cars in the list and tells the view to update its images.*/
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
-                reverseCarAtWindowEdge(car);
-                car.move();
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-            }
-        }
+        cc.timer.start();*/
     }
 
     protected static void reverseCarAtWindowEdge(Vehicle car) {

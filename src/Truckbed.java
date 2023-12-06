@@ -1,3 +1,5 @@
+package src;
+
 public class Truckbed {
     private int currentTruckbedAngle;
     public int getTruckbedAngle() {

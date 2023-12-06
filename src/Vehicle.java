@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 
@@ -60,16 +62,23 @@ public class Vehicle implements Movable {
     }
 
     protected void incrementSpeed(double amount) {
-       currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        if (getCurrentSpeed() != 0) {
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        }
     }
+
     protected void decrementSpeed(double amount) {
-       currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        if (getCurrentSpeed() != 0) {
+            currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        }
     }
+
     public void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
         }
     }
+
     public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);

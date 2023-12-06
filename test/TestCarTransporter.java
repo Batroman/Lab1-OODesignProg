@@ -1,3 +1,4 @@
+import src.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,10 +15,8 @@ public class TestCarTransporter {
     @Before
     public void init() {
         set = new CarTransporter(2, 250, Color.green, "ScaniaVabis", "N", 0, 0,6);
-        set.currentSpeed = 0;
 
         VolvoObj = new Volvo240(4,100, Color.black,"Volvo240","N",0,0);
-        VolvoObj.currentSpeed = 0;
 
         SaabObj = new Saab95(2, 125, Color.red, "Saab95", "N", 5,5);
 
@@ -37,7 +36,7 @@ public class TestCarTransporter {
    @Test
     public void testStartEngine(){
         set.startEngine();
-        assertEquals(set.currentSpeed, 0.1,0);
+        assertEquals(set.getCurrentSpeed(), 0.1,0);
     }
 
     @Test
