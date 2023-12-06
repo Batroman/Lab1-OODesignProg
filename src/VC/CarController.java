@@ -4,7 +4,6 @@ import src.Model.Saab95;
 import src.Model.Scania;
 import src.Model.Vehicle;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,70 +17,59 @@ import java.util.ArrayList;
 public class CarController {
     // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener(this));
-
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+
+
+
 
     // A list of cars
     ArrayList<Vehicle> cars = new ArrayList<>();
 
+    // CarController accepts a CarView-object AND an ArrayList of Vehicles
+    public CarController(CarView frame, ArrayList<Vehicle> vehicleList) {
+        this.frame = frame;
 
-    // CarController accepts an arbitrary number of objects of type Vehicle
-    public CarController(Vehicle... list) {
-
-        //Adding each vehicle to the ArrayList 'cars'
-        for (Vehicle vehicle: list) {
-            cars.add(vehicle);
-        }
-
-        this.frame = new CarView("CarSim 1.0", this);
-
-        // Start the timer
-        this.timer.start();
+        cars = vehicleList;
 
         // Listeners for CarView
-        this.frame.gasButton.addActionListener(new ActionListener() {
+        frame.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gas(frame.gasAmount);
             }
         });
-        this.frame.brakeButton.addActionListener(new ActionListener() {
+        frame.brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { brake(frame.gasAmount);
             }
         });
-        this.frame.turboOnButton.addActionListener(new ActionListener() {
+        frame.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {turboOn();
             }
         });
-        this.frame.turboOffButton.addActionListener(new ActionListener() {
+        frame.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { turboOff();
             }
         });
-        this.frame.liftBedButton.addActionListener(new ActionListener() {
+        frame.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {liftBed();
             }
         });
-        this.frame.lowerBedButton.addActionListener(new ActionListener() {
+        frame.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {lowerBed();
             }
         });
-        this.frame.startButton.addActionListener(new ActionListener() {
+        frame.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {startAllCars();
             }
         });
-        this.frame.stopButton.addActionListener(new ActionListener() {
+        frame.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {stopAllCars();
             }

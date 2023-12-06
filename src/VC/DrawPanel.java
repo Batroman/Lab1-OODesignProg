@@ -16,20 +16,20 @@ public class DrawPanel extends JPanel{
     protected HashMap<Vehicle, BufferedImage> imageMap = new HashMap<>();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, ArrayList<Vehicle> cars) {
+    public DrawPanel(int x, int y, ArrayList<Vehicle> list) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
 
         // Print an error message in case file is not found with a try/catch block
         try {
-            addImageFilesToCars(cars);
+            addImageFilesToCars(list);
         } catch (IOException ex) {ex.printStackTrace();}
     }
 
     // adds entry with each car and its associated image to HashMap
-    private void addImageFilesToCars(ArrayList<Vehicle> cars) throws IOException {
-        for (Vehicle car: cars){
+    private void addImageFilesToCars(ArrayList<Vehicle> list) throws IOException {
+        for (Vehicle car: list){
             String vehicleName = car.getModelName();
             String picName = "pics/" + vehicleName + ".jpg";
             imageMap.put(car, ImageIO.read(DrawPanel.class.getResourceAsStream(picName)));

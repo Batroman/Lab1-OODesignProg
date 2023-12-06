@@ -1,12 +1,9 @@
 package src.VC;
 
-import src.Model.Vehicle;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -15,12 +12,10 @@ import java.util.ArrayList;
  * each of it's components.
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements TimerObserver{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
-    CarController carC;
     DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
 
@@ -40,12 +35,14 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String frameName, CarController cc){
-        this.carC = cc;
-        ArrayList<Vehicle> cars = this.carC.cars;
-        System.out.println(cc.cars);
-        drawPanel = new DrawPanel(X, Y-240, cars);
+    public CarView(String frameName, DrawPanel drawPanel){
+        this.drawPanel = drawPanel;
         initComponents(frameName);
+    }
+
+
+    public void actOnTimerChange() {
+        System.out.println("Timer ticked");
     }
 
     // Sets everything in place and fits everything
@@ -56,12 +53,13 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-        
+
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
                         1);//step
+
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
