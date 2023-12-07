@@ -36,7 +36,7 @@ public class Application {
 
         CarController cc = new CarController(frame, vehicleList);
 
-        animator = new VehicleAnimator(vehicleList);
+        animator = new VehicleAnimator();
 
         //Listeners need to be added before animate!
         addListener(drawPanel);

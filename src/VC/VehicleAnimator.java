@@ -1,17 +1,13 @@
 package src.VC;
 
-import src.Model.Vehicle;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleAnimator {
 
-    private final ArrayList<Vehicle> vehicleList;
 
-    public VehicleAnimator(ArrayList<Vehicle> vehicleList) {
-        this.vehicleList = vehicleList;
-    }
+
+    public VehicleAnimator() {}
     public void animate(){
         try {
             while (true) {
