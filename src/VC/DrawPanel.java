@@ -12,26 +12,24 @@ import java.util.HashMap;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
-    ArrayList<Vehicle> cars;
+public class DrawPanel extends JPanel implements TimerObserver{
     protected HashMap<Vehicle, BufferedImage> imageMap = new HashMap<>();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, ArrayList<Vehicle> cars) {
-        this.cars = cars;
+    public DrawPanel(int x, int y, ArrayList<Vehicle> list) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
 
         // Print an error message in case file is not found with a try/catch block
         try {
-            addImageFilesToCars(cars);
+            addImageFilesToCars(list);
         } catch (IOException ex) {ex.printStackTrace();}
     }
 
     // adds entry with each car and its associated image to HashMap
-    protected void addImageFilesToCars(ArrayList<Vehicle> cars) throws IOException {
-        for (Vehicle car: cars){
+    private void addImageFilesToCars(ArrayList<Vehicle> list) throws IOException {
+        for (Vehicle car: list){
             String vehicleName = car.getModelName();
             String picName = "pics/" + vehicleName + ".jpg";
             imageMap.put(car, ImageIO.read(DrawPanel.class.getResourceAsStream(picName)));
@@ -50,6 +48,12 @@ public class DrawPanel extends JPanel{
         for (Vehicle car : imageMap.keySet()) {
             g.drawImage(imageMap.get(car), (int) Math.round(car.getPosition().x), (int) Math.round(car.getPosition().y), null);
         }
+    }
+
+    // Listener for VehicleAnimator via TimerObserver
+    @Override
+    public void actOnTimerChange() {
+        this.repaint();
     }
 }
 

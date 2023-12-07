@@ -1,7 +1,5 @@
 package src.VC;
 
-import src.Model.Vehicle;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,7 +17,6 @@ public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
     DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
 
@@ -34,6 +31,7 @@ public class CarView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
@@ -60,6 +58,7 @@ public class CarView extends JFrame{
                         0, //min
                         100, //max
                         1);//step
+
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {

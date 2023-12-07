@@ -1,6 +1,5 @@
 package src.VC;
 
-import src.Application;
 import src.Model.Saab95;
 import src.Model.Scania;
 import src.Model.Vehicle;
@@ -22,14 +21,8 @@ import java.util.random.RandomGenerator;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController implements TimerObserver{
     // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -37,16 +30,11 @@ public class CarController {
     // A list of cars
     ArrayList<Vehicle> cars = new ArrayList<>();
 
-
-    // CarController accepts an arbitrary number of objects of type Vehicle
-    public CarController(ArrayList<Vehicle> vehicles, CarView frame) {
+    // CarController accepts a CarView-object AND an ArrayList of Vehicles
+    public CarController(CarView frame, ArrayList<Vehicle> vehicleList) {
         this.frame = frame;
-        cars = vehicles;
 
-      //  this.frame = new CarView("CarSim 1.0", this);
-
-        // Start the timer
-        this.timer.start();
+        cars = vehicleList;
 
         // Listeners for CarView
         frame.gasButton.addActionListener(new ActionListener() {
@@ -130,6 +118,15 @@ public class CarController {
         if(car.getPosition().x <= 0 || car.getPosition().y >= 800-110){
             car.turnLeft();
             car.turnLeft();
+        }
+    }
+
+    // Listener for VehicleAnimator via TimerObserver
+    @Override
+    public void actOnTimerChange() {
+        for (Vehicle car: cars) {
+            reverseCarAtWindowEdge(car);
+            car.move();
         }
     }
 
@@ -223,4 +220,3 @@ public class CarController {
     }
 
 }
-
