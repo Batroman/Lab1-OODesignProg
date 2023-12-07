@@ -14,14 +14,11 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController implements TimerObserver{
     // member fields:
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
-
-
-
 
     // A list of cars
     ArrayList<Vehicle> cars = new ArrayList<>();
@@ -85,6 +82,15 @@ public class CarController {
         }
     }
 
+    // Listener for VehicleAnimator via TimerObserver
+    @Override
+    public void actOnTimerChange() {
+        for (Vehicle car: cars) {
+            reverseCarAtWindowEdge(car);
+            car.move();
+        }
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
@@ -142,5 +148,6 @@ public class CarController {
             }
         }
     }
+
 
 }

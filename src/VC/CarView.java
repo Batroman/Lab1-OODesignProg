@@ -12,7 +12,7 @@ import java.awt.*;
  * each of it's components.
  **/
 
-public class CarView extends JFrame implements TimerObserver{
+public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -38,11 +38,6 @@ public class CarView extends JFrame implements TimerObserver{
     public CarView(String frameName, DrawPanel drawPanel){
         this.drawPanel = drawPanel;
         initComponents(frameName);
-    }
-
-
-    public void actOnTimerChange() {
-        System.out.println("Timer ticked");
     }
 
     // Sets everything in place and fits everything

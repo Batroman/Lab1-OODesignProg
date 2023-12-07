@@ -15,7 +15,7 @@ public class Application {
 
     private CarController cc;
 
-    private VehicleAnimator animator = null;
+    private VehicleAnimator animator;
 
     public static ArrayList<Vehicle> vehicleList = new ArrayList<>();
 
@@ -37,15 +37,20 @@ public class Application {
         CarController cc = new CarController(frame, vehicleList);
 
         animator = new VehicleAnimator(vehicleList);
-        animate(drawPanel);
+
+        //Listeners need to be added before animate!
+        addListener(drawPanel);
+        addListener(cc);
+        animate();
     }
 
     public static void main(String[] args){
         Application app = new Application();
     }
 
-    public void animate(DrawPanel drawPanel){
-        animator.animate(drawPanel);
+    // Delegate methods to VehicleAnimator
+    public void animate(){
+        animator.animate();
     }
     public void addListener(TimerObserver l){
         animator.addListener(l);

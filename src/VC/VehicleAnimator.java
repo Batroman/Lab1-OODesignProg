@@ -12,19 +12,11 @@ public class VehicleAnimator {
     public VehicleAnimator(ArrayList<Vehicle> vehicleList) {
         this.vehicleList = vehicleList;
     }
-    public void animate(DrawPanel drawPanel){
+    public void animate(){
         try {
             while (true) {
                 Thread.sleep(50);
-                System.out.println("Hello");
-                for(Vehicle car: vehicleList) {
-                    //reverseCarAtWindowEdge(car);
-                    car.move();
-                    //notifyListeners();
-
-                    // repaint() calls the paintComponent method of the panel
-                    drawPanel.repaint();
-                }
+                notifyListeners();
             }
         } catch (InterruptedException e) {
             System.exit(0);
@@ -32,6 +24,7 @@ public class VehicleAnimator {
     }
 
     private final List<TimerObserver> listeners = new ArrayList<>();
+
     public void addListener(TimerObserver l){
         listeners.add(l);
     }
