@@ -11,8 +11,7 @@ public class TestScania {
 
     @Before
     public void init(){
-        set = new Scania(2, 250, Color.green, "ScaniaTruck", "N", 0, 0);
-        set.currentSpeed = 0;
+        set = new Scania(2, 250, Color.green, "ScaniaTruck", 0, 0);
 
     }
     @Test
@@ -41,6 +40,6 @@ public class TestScania {
     @Test
     public void testStartEngine(){
         set.startEngine();
-        assertEquals(set.currentSpeed, 0.1,0);
+        assertEquals(set.getCurrentSpeed(), 0.1,0);
     }
 }

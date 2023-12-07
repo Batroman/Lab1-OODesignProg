@@ -1,3 +1,4 @@
+/*
 package src.VC;
 
 import src.Model.Vehicle;
@@ -5,7 +6,9 @@ import src.Model.Vehicle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/* Each step the TimerListener moves all the cars in the list and tells the view to update its images.*/
+*/
+/* Each step the TimerListener moves all the cars in the list and tells the view to update its images.*//*
+
 class TimerListener implements ActionListener {
     private final CarController carController;
 
@@ -22,3 +25,4 @@ class TimerListener implements ActionListener {
         }
     }
 }
+*/

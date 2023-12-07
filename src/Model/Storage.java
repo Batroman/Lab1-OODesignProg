@@ -18,7 +18,7 @@ public class Storage<T extends Cars> {
 
     protected void unloadStorage(){
         T unload = storageContents.getLast();
-        unload.setPosition(unload.getXPosition() -1, unload.getYPosition()-1);
+        unload.getPosition().setLocation(unload.getPosition().x -1, unload.getPosition().y-1);
         storageContents.removeLast();
         System.out.println(unload.getModelName() + " has been unloaded");
     }

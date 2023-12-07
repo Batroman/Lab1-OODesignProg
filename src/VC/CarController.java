@@ -1,13 +1,20 @@
 package src.VC;
 
+import src.Application;
 import src.Model.Saab95;
 import src.Model.Scania;
 import src.Model.Vehicle;
+import src.Model.VehicleFactory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.http.WebSocket;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -22,7 +29,7 @@ public class CarController {
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener(this));
+    private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -32,66 +39,95 @@ public class CarController {
 
 
     // CarController accepts an arbitrary number of objects of type Vehicle
-    public CarController(Vehicle... list) {
+    public CarController(ArrayList<Vehicle> vehicles, CarView frame) {
+        this.frame = frame;
+        cars = vehicles;
 
-        //Adding each vehicle to the ArrayList 'cars'
-        for (Vehicle vehicle: list) {
-            cars.add(vehicle);
-        }
-
-        this.frame = new CarView("CarSim 1.0", this);
+      //  this.frame = new CarView("CarSim 1.0", this);
 
         // Start the timer
         this.timer.start();
 
         // Listeners for CarView
-        this.frame.gasButton.addActionListener(new ActionListener() {
+        frame.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gas(frame.gasAmount);
             }
         });
-        this.frame.brakeButton.addActionListener(new ActionListener() {
+        frame.brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { brake(frame.gasAmount);
             }
         });
-        this.frame.turboOnButton.addActionListener(new ActionListener() {
+        frame.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {turboOn();
             }
         });
-        this.frame.turboOffButton.addActionListener(new ActionListener() {
+        frame.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { turboOff();
             }
         });
-        this.frame.liftBedButton.addActionListener(new ActionListener() {
+        frame.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {liftBed();
             }
         });
-        this.frame.lowerBedButton.addActionListener(new ActionListener() {
+        frame.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {lowerBed();
             }
         });
-        this.frame.startButton.addActionListener(new ActionListener() {
+        frame.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {startAllCars();
             }
         });
-        this.frame.stopButton.addActionListener(new ActionListener() {
+        frame.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {stopAllCars();
             }
         });
 
+        frame.addCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    addCars();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        frame.removeCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    removeCars();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+    }
+    private class TimerListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            for (Vehicle car : cars) {
+                reverseCarAtWindowEdge(car);
+                car.move();
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
+            }
+        }
     }
     //Methods
 
     protected static void reverseCarAtWindowEdge(Vehicle car) {
-        if(car.getXPosition() <= 0 || car.getXPosition() >= 800-110){
+        if(car.getPosition().x <= 0 || car.getPosition().y >= 800-110){
             car.turnLeft();
             car.turnLeft();
         }
@@ -142,7 +178,7 @@ public class CarController {
     void liftBed(){
         for (Vehicle car: cars){
             if (car instanceof Scania)
-                ((Scania) car).increaseTruckbedAngle(10);
+                ((Scania) car).raiseTruckbed(10);
 
         }
     }
@@ -150,9 +186,41 @@ public class CarController {
     void lowerBed(){
         for (Vehicle car: cars){
             if (car instanceof Scania){
-                ((Scania) car).reduceTruckbedAngle(10);
+                ((Scania) car).lowerTruckbed(10);
             }
         }
     }
 
+
+    void addCars() throws IOException {
+        Random randomNumber = new Random();
+        int n = randomNumber.nextInt(3);
+        if (frame.drawPanel.cars.size() < 10) {
+            switch (n) {
+                case 0:
+                    frame.drawPanel.cars.add(VehicleFactory.createVolvo240(4, 100, Color.black, "Volvo240", 1, 0));
+                    break;
+                case 1:
+                    frame.drawPanel.cars.add(VehicleFactory.createSaab95(2, 125, Color.red, "Saab95",  1,  100));
+                    break;
+                case 2:
+                    frame.drawPanel.cars.add(VehicleFactory.createScania(2, 250, Color.black, "Scania",  1, 200));
+                    break;
+            }
+            frame.drawPanel.addImageFilesToCars(cars);
+        }
+
+        //Add a car to a random location - not the same as existing car.
+    }
+
+
+    void removeCars() throws IOException {
+        if (!frame.drawPanel.cars.isEmpty()){
+            frame.drawPanel.cars.removeLast();
+        }
+        // Need to add function - remove images from cars in DrawPanel
+
+    }
+
 }
+

@@ -7,13 +7,13 @@ public class CarWorkshop<T extends Cars> {
     public CarWorkshop(int maxLoadingCapacity){
         this.parent = new Storage<>(maxLoadingCapacity);
     }
-    protected ArrayList<T> getLoadedCars(){
+    public ArrayList<T> getLoadedCars(){
         return parent.getContents();
     }
-    protected void loadWorkshop(T car) {
+    public void loadWorkshop(T car) {
         parent.loadStorage(car);
     }
-    protected void unloadWorkshop(){
+    public void unloadWorkshop(){
         parent.unloadStorage();
     }
 }

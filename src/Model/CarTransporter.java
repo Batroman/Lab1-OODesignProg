@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-public class CarTransporter extends Vehicle{
+public class CarTransporter extends Truck{
     private Truckbed truckbedParent;
     private Storage<Cars> storageParent;
 
@@ -12,28 +12,29 @@ public class CarTransporter extends Vehicle{
                           double enginePower,
                           Color color,
                           String modelName,
-                          String direction,
                           double xPos,
                           double yPos,
                           int maxLoadingCapacity){
 
-        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
+        super(nrDoors, enginePower, color, modelName, xPos, yPos);
         this.truckbedParent = new Truckbed();
         this.storageParent = new Storage<>(maxLoadingCapacity);
     }
+    @Override
     public int getTruckbedAngle() {
         return truckbedParent.getTruckbedAngle();
     }
 
-    protected ArrayList<Cars> getLoadedCars(){return storageParent.getContents();}
-    public void reduceTruckbedAngle() {
+    public ArrayList<Cars> getLoadedCars(){return storageParent.getContents();}
+
+    public void lowerTruckbed() {
         if (getCurrentSpeed() == 0) {
-            truckbedParent.reduceTruckbedAngle(70);
+            truckbedParent.lower(70);
         }
     }
-    public void increaseTruckbedAngle() {
+    public void raiseTruckbed() {
         if (getCurrentSpeed() == 0) {
-            truckbedParent.increaseTruckbedAngle(70);
+            truckbedParent.raise(70);
         }
     }
     @Override
@@ -43,22 +44,22 @@ public class CarTransporter extends Vehicle{
         }
     }
     protected boolean checkDistance(Cars car) {
-        double distance = Point2D.distance(getXPosition(), getYPosition(),
-                car.getXPosition(), car.getYPosition());
+        double distance = Point2D.distance(getPosition().x, getPosition().y,
+                car.getPosition().x, car.getPosition().y);
         if (distance <= 2) {
             return true;
         }
         else {return false;}
     }
 
-    protected void loadCarTransporter(Cars car) {
+    public void loadCarTransporter(Cars car) {
         if (checkDistance(car) && (getTruckbedAngle() == 0)) {
             storageParent.loadStorage(car);
-            car.setPosition(getXPosition(), getYPosition());
+            car.getPosition().setLocation(getPosition().x, getPosition().y);
         }
     }
 
-    protected void unloadCarTransporter(){
+    public void unloadCarTransporter(){
         if(getTruckbedAngle() == 0 && getCurrentSpeed() == 0){
             storageParent.unloadStorage();
         }
@@ -67,9 +68,9 @@ public class CarTransporter extends Vehicle{
     @Override
     public void move() {
         super.move();
-        double transportXPos = getXPosition();
-        double transportYPos = getYPosition();
-        String transportDir = getDirection();
+        double transportXPos = getPosition().x;
+        double transportYPos = getPosition().y;
+        Direction transportDir = getDirection();
         for(Vehicle contents: storageParent.getContents()){
             contents.setPosition(transportXPos,transportYPos);
             contents.setDirection(transportDir);

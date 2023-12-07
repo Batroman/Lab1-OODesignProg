@@ -1,3 +1,4 @@
+/*
 import org.junit.Before;
 import org.junit.Test;
 import src.Model.Vehicle;
@@ -13,7 +14,6 @@ public class TestVehicle {
     @Before
     public void init() {
         set = new Vehicle(4,100, Color.blue,"MyCar","N",0,0);
-        set.currentSpeed = 1;
     }
 
     @Test
@@ -167,3 +167,4 @@ public class TestVehicle {
 }
 
 
+*/

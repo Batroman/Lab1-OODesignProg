@@ -18,8 +18,8 @@ public class TestCarWorkshop {
     @Before
     public void init(){
         set = new CarWorkshop<>(5);
-        volvo = new Volvo240(4,100, Color.black,"Volvo240","N",0,0);
-        saab = new Saab95(2, 125, Color.red, "Saab95", "N", 5,5);
+        volvo = new Volvo240(4,100, Color.black,"Volvo240",0,0);
+        saab = new Saab95(2, 125, Color.red, "Saab95", 5,5);
         genericworkshop = new CarWorkshop<>(3);
     }
 

@@ -20,7 +20,6 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
     DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
 
@@ -35,16 +34,15 @@ public class CarView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
-
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+    JButton addCarsButton = new JButton("Add Car");
+    JButton removeCarsButton = new JButton("Remove Car");
+
     // Constructor
-    public CarView(String frameName, CarController cc){
-        this.carC = cc;
-        ArrayList<Vehicle> cars = this.carC.cars;
-        System.out.println(cc.cars);
-        drawPanel = new DrawPanel(X, Y-240, cars);
+    public CarView(String frameName, DrawPanel drawPanel){
+        this.drawPanel = drawPanel;
         initComponents(frameName);
     }
 
@@ -83,6 +81,8 @@ public class CarView extends JFrame{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarsButton,6);
+        controlPanel.add(removeCarsButton,7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);

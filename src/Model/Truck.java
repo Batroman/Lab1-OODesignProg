@@ -1,5 +1,5 @@
 package src.Model;
-/*import java.awt.*;
+import java.awt.*;
 
 public abstract class Truck extends Vehicle{
 
@@ -9,25 +9,16 @@ public abstract class Truck extends Vehicle{
                  double enginePower,
                  Color color,
                  String modelName,
-                 int direction,
                  double xPos,
                  double yPos) {
 
-        super(nrDoors, enginePower, color, modelName, direction, xPos, yPos);
-        currentTruckbedAngle = 0;
+        super(nrDoors, enginePower, color, modelName, xPos, yPos);
+
     }
 
-    public double getTruckbedAngle() {
+    public int getTruckbedAngle() {
         return currentTruckbedAngle;
     }
-
-    public void reduceTruckbedAngle(int angle){}
-
-    public void reduceTruckbedAngle(){}
-
-    public void increaseTruckbedAngle(int angle){}
-
-    public void increaseTruckbedAngle(){}
 
     @Override
     public void startEngine() {
@@ -36,4 +27,4 @@ public abstract class Truck extends Vehicle{
         }
     }
 
-}*/
+}
