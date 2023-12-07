@@ -20,9 +20,9 @@ public class Application {
     public static ArrayList<Vehicle> vehicleList = new ArrayList<>();
 
     protected Application() {
-        Vehicle Volvo240 = VehicleFactory.createVolvo240(4,100, Color.black,"Volvo240","E",1,0);
-        Vehicle Saab95 = VehicleFactory.createSaab95(2, 125, Color.red, "Saab95", "E", 1,100);
-        Vehicle Scania = VehicleFactory.createScania(2,250,Color.black,"Scania","E",1,200);
+        Vehicle Volvo240 = VehicleFactory.createVolvo240(4,100, Color.black,"Volvo240",1,0);
+        Vehicle Saab95 = VehicleFactory.createSaab95(2, 125, Color.red, "Saab95",  1,100);
+        Vehicle Scania = VehicleFactory.createScania(2,250,Color.black,"Scania",1,200);
 
         vehicleList.add(Volvo240);
         vehicleList.add(Saab95);

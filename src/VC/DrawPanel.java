@@ -28,7 +28,7 @@ public class DrawPanel extends JPanel implements TimerObserver{
     }
 
     // adds entry with each car and its associated image to HashMap
-    private void addImageFilesToCars(ArrayList<Vehicle> list) throws IOException {
+    void addImageFilesToCars(ArrayList<Vehicle> list) throws IOException {
         for (Vehicle car: list){
             String vehicleName = car.getModelName();
             String picName = "pics/" + vehicleName + ".jpg";
