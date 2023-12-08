@@ -198,9 +198,6 @@ public class CarController implements TimerObserver{
         }
     }
 
-
-
-
     void removeCars() throws IOException {
         if (!cars.isEmpty()){
             cars.removeLast();
