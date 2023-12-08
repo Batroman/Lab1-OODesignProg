@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class Saab95 extends Cars{
 
+
     private boolean turboOn;
 
     public Saab95 (int nrDoors, double enginePower, Color color, String modelName, double xPos, double yPos) {
@@ -11,6 +12,7 @@ public class Saab95 extends Cars{
         super(nrDoors, enginePower, color, modelName, xPos, yPos);
        // setPosition(xPos,yPos);
         turboOn = false;
+        this.turnRight();
     }
 
     public void setTurboOn(){

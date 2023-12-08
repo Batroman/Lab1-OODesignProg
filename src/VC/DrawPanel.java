@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel implements TimerObserver{
+public class DrawPanel extends JPanel implements AnimationTickerObserver {
     protected HashMap<Vehicle, BufferedImage> imageMap = new HashMap<>();
 
     // Initializes the panel and reads the images
@@ -52,9 +52,9 @@ public class DrawPanel extends JPanel implements TimerObserver{
         }
     }
 
-    // Listener for VehicleAnimator via TimerObserver
+    // Listener for AnimationTicker
     @Override
-    public void actOnTimerChange() {
+    public void actOnAnimationTicker() {
         this.repaint();
     }
 }

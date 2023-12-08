@@ -1,16 +1,16 @@
 package src.VC;
 
-import src.Model.*;
+import src.Model.Saab95;
+import src.Model.Scania;
+import src.Model.Vehicle;
+import src.Model.VehicleFactory;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.http.WebSocket;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.random.RandomGenerator;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -18,7 +18,7 @@ import java.util.random.RandomGenerator;
 * modifying the model state and the updating the view.
  */
 
-public class CarController implements TimerObserver{
+public class CarController implements AnimationTickerObserver {
     // member fields:
 
     // The frame that represents this instance View of the MVC pattern
@@ -106,11 +106,15 @@ public class CarController implements TimerObserver{
             car.turnLeft();
             car.turnLeft();
         }
+        if(car.getPosition().y < 0 || car.getPosition().y >= 500){
+            car.turnRight();
+            car.turnRight();
+        }
     }
 
-    // Listener for VehicleAnimator via TimerObserver
+    // Listener for AnimationTicker
     @Override
-    public void actOnTimerChange() {
+    public void actOnAnimationTicker() {
         for (Vehicle car: cars) {
             reverseCarAtWindowEdge(car);
             car.move();
