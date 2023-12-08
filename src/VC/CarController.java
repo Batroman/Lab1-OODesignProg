@@ -1,9 +1,6 @@
 package src.VC;
 
-import src.Model.Saab95;
-import src.Model.Scania;
-import src.Model.Vehicle;
-import src.Model.VehicleFactory;
+import src.Model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -102,20 +99,10 @@ public class CarController implements TimerObserver{
         });
 
     }
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
-                reverseCarAtWindowEdge(car);
-                car.move();
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-            }
-        }
-    }
     //Methods
 
     protected static void reverseCarAtWindowEdge(Vehicle car) {
-        if(car.getPosition().x <= 0 || car.getPosition().y >= 800-110){
+        if(car.getPosition().x < 0 || car.getPosition().x >= 800-110){
             car.turnLeft();
             car.turnLeft();
         }
@@ -192,28 +179,31 @@ public class CarController implements TimerObserver{
     void addCars() throws IOException {
         Random randomNumber = new Random();
         int n = randomNumber.nextInt(3);
-        if (frame.drawPanel.cars.size() < 10) {
+        int x = randomNumber.nextInt(690);
+        int y = randomNumber.nextInt(500);
+        if (cars.size() < 10) {
             switch (n) {
                 case 0:
-                    frame.drawPanel.cars.add(VehicleFactory.createVolvo240(4, 100, Color.black, "Volvo240", 1, 0));
+                    cars.add(VehicleFactory.createVolvo240(4, 100, Color.black, "Volvo240", x, y));
                     break;
                 case 1:
-                    frame.drawPanel.cars.add(VehicleFactory.createSaab95(2, 125, Color.red, "Saab95",  1,  100));
+                    cars.add(VehicleFactory.createSaab95(2, 125, Color.red, "Saab95", x, y));
                     break;
                 case 2:
-                    frame.drawPanel.cars.add(VehicleFactory.createScania(2, 250, Color.black, "Scania",  1, 200));
+                    cars.add(VehicleFactory.createScania(2, 250, Color.black, "Scania", x, y));
                     break;
             }
+
             frame.drawPanel.addImageFilesToCars(cars);
         }
-
-        //Add a car to a random location - not the same as existing car.
     }
 
 
+
+
     void removeCars() throws IOException {
-        if (!frame.drawPanel.cars.isEmpty()){
-            frame.drawPanel.cars.removeLast();
+        if (!cars.isEmpty()){
+            cars.removeLast();
         }
         // Need to add function - remove images from cars in DrawPanel
 

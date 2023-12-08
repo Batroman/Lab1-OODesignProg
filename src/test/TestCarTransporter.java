@@ -1,4 +1,3 @@
-/*
 import org.junit.Before;
 import org.junit.Test;
 import src.Model.CarTransporter;
@@ -81,5 +80,5 @@ public class TestCarTransporter {
         assertEquals(VolvoObj.getPosition(), set.getPosition());
     }
 }
-*/
+
 

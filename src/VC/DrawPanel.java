@@ -36,6 +36,8 @@ public class DrawPanel extends JPanel implements TimerObserver{
         }
     }
 
+
+
     // This method is called each time the panel updates/refreshes/repaints itself
     @Override
     protected void paintComponent(Graphics g) {
